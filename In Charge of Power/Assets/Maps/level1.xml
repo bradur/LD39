@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="spritesheet" tilewidth="32" tileheight="32" tilecount="64" columns="8">
+  <image source="../Images/spritesheet.png" width="256" height="256"/>
+ </tileset>
+ <layer name="Grass" width="20" height="20">
+  <properties>
+   <property name="Type" type="int" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYKIyxgeIkR81j7rmDXZMCRg1b9Q8Ss0bxeRjAJr8AaU=
+  </data>
+ </layer>
+ <layer name="FactoryFloor" width="20" height="20">
+  <properties>
+   <property name="Type" type="int" value="3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYKA+YMSDiZEfNY+65g12gM8/hPCoeaPmUWreKCAfAAChPgC/
+  </data>
+ </layer>
+ <layer name="Water" width="20" height="20">
+  <properties>
+   <property name="Type" type="int" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYKAcMCNhaoBR80bNGzVv1LxR8wa/eQAiXgC1
+  </data>
+ </layer>
+</map>
