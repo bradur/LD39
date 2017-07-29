@@ -7,6 +7,7 @@ TagManager:
   - BackgroundContainer
   - WaterContainer
   - FactoryFloorContainer
+  - CursorManager
   layers:
   - Default
   - TransparentFX

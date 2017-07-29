@@ -3,7 +3,7 @@
         [ ] Show selected component
         [ ] Cancel (esc / cancel button)
         [ ] Snap to grid when hovering & fits
-        [ ] Cursor with at least default & pointer types
+        [x] Cursor with at least default & pointer types
 
     [ ] Dashboard
         [ ] Power tracker
@@ -30,8 +30,8 @@
 
 [ ] Art
     [ ] Cursor
-        [ ] Default
-        [ ] Pointer
+        [~] Default
+        [~] Pointer
     [ ] Textures
         [ ] UI background
         [ ] UI borders
@@ -68,4 +68,4 @@
     [ ] Beep sound for when running out of power
 
 [ ] Music
-    [ ] Main theme
+    [~] Main theme
