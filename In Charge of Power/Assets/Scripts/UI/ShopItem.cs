@@ -58,9 +58,14 @@ public class ShopItem : MonoBehaviour
         txtOutputCount.text = "" + outputCount;
     }
 
-    void Update()
+    public void HoverIn ()
     {
+        CursorManager.main.SetCursor(CursorType.Pointer);
+    }
 
+    public void HoverOut ()
+    {
+        CursorManager.main.SetCursor(CursorType.Default);
     }
 
     public void Kill()
@@ -75,7 +80,7 @@ public class ShopItem : MonoBehaviour
         {
             PlacementManager.main.SelectItem(ItemManager.main.GetItem(itemType), inputCount, outputCount);
             DebugLogger.Log(string.Format("You bought a \"{0}\" with {1} dollarydoos.", itemName, cost));
-            Kill();
+            //Kill();
         }
         else
         {

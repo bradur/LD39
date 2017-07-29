@@ -22,19 +22,25 @@ public class HUDMoney : MonoBehaviour {
     void Start()
     {
         currentMoney = MoneyManager.main.GetBalance();
-        Topup(currentMoney);
+        SetValue(currentMoney);
     }
 
-    public void Topup(int totalAfterTopup)
+    public void SetValue(int value)
     {
-        currentMoney = totalAfterTopup;
-        txtComponent.text = string.Format("${0}", totalAfterTopup);
+        currentMoney = value;
+        txtComponent.text = string.Format("${0}", currentMoney);
     }
 
-    public void Withdraw(int totalAfterWithdraw)
+    public void Topup(int value)
     {
-        currentMoney = totalAfterWithdraw;
-        txtComponent.text = string.Format("${0}", totalAfterWithdraw);
+        currentMoney += value;
+        txtComponent.text = string.Format("${0}", currentMoney);
+    }
+
+    public void Withdraw(int value)
+    {
+        currentMoney -= value;
+        txtComponent.text = string.Format("${0}", currentMoney);
     }
 
 }

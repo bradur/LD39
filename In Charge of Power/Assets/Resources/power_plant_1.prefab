@@ -509,6 +509,7 @@ MonoBehaviour:
   spriteRendererOutputIcon: {fileID: 212084945738418924}
   textMeshOutputCount: {fileID: 102743286308159638}
   minSize: 4
+  outputGenerationInterval: 1
 --- !u!114 &114928599466355538
 MonoBehaviour:
   m_ObjectHideFlags: 1

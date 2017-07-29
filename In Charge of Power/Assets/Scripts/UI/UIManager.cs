@@ -5,7 +5,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class UIManager : MonoBehaviour {
+public class UIManager : MonoBehaviour
+{
 
     public static UIManager main;
 
@@ -23,23 +24,104 @@ public class UIManager : MonoBehaviour {
     }
 
     [SerializeField]
+    private HUDResource hudCoal;
+    [SerializeField]
+    private HUDResource hudNuclear;
+
+
+    [SerializeField]
     private HUDMoney hudMoney;
 
-    public void Topup (int totalAfterTopup)
+    void SetMoney(int value)
     {
-        hudMoney.Topup(totalAfterTopup);
+        hudMoney.SetValue(value);
     }
 
-    public void Withdraw(int totalAfterWithdraw)
+    void Topup(int value)
     {
-        hudMoney.Topup(totalAfterWithdraw);
+        hudMoney.Topup(value);
     }
 
-    void Start () {
-    
+    void Withdraw(int value)
+    {
+        hudMoney.Withdraw(value);
     }
 
-    void Update () {
-    
+    [SerializeField]
+    private HUDPower hudPower;
+
+    void AddPower(int amount)
+    {
+        hudPower.AddPower(amount);
+    }
+
+    void DrainPower(int amount)
+    {
+        hudPower.DrainPower(amount);
+    }
+
+    void SetPower(int amount)
+    {
+        hudPower.SetPower(amount);
+    }
+
+    public void WithdrawResource(int amount, ResourceType resourceType)
+    {
+        if (resourceType == ResourceType.Power)
+        {
+            DrainPower(amount);
+        }
+        else if (resourceType == ResourceType.Money)
+        {
+            Withdraw(amount);
+        }
+        else if (resourceType == ResourceType.Coal)
+        {
+            hudCoal.Withdraw(amount);
+        }
+        else if (resourceType == ResourceType.Nuclear)
+        {
+            hudNuclear.Withdraw(amount);
+        }
+    }
+
+    public void AddResource(int amount, ResourceType resourceType)
+    {
+        if (resourceType == ResourceType.Power)
+        {
+            AddPower(amount);
+        }
+        else if (resourceType == ResourceType.Money)
+        {
+            Topup(amount);
+        }
+        else if (resourceType == ResourceType.Coal)
+        {
+            hudCoal.AddValue(amount);
+        }
+        else if (resourceType == ResourceType.Nuclear)
+        {
+            hudNuclear.AddValue(amount);
+        }
+    }
+
+    public void SetResource(int amount, ResourceType resourceType)
+    {
+        if (resourceType == ResourceType.Power)
+        {
+            SetPower(amount);
+        }
+        else if (resourceType == ResourceType.Money)
+        {
+            SetMoney(amount);
+        }
+        else if (resourceType == ResourceType.Coal)
+        {
+            hudCoal.SetValue(amount);
+        }
+        else if (resourceType == ResourceType.Nuclear)
+        {
+            hudNuclear.SetValue(amount);
+        }
     }
 }

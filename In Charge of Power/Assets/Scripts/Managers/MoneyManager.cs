@@ -32,7 +32,7 @@ public class MoneyManager : MonoBehaviour
         if (money >= amount)
         {
             money -= amount;
-            UIManager.main.Withdraw(money);
+            UIManager.main.WithdrawResource(amount, ResourceType.Money);
             return true;
         }
         DebugLogger.Log(string.Format("Not enough money! ({0} - {1} = {2})", money, amount, money - amount));
@@ -42,7 +42,7 @@ public class MoneyManager : MonoBehaviour
     public void Topup(int amount)
     {
         money += amount;
-        UIManager.main.Topup(money);
+        UIManager.main.AddResource(amount, ResourceType.Money);
     }
 
     public int GetBalance()

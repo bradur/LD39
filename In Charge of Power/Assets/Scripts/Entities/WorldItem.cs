@@ -5,7 +5,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class WorldItem : MonoBehaviour {
+public class WorldItem : MonoBehaviour
+{
 
     [SerializeField]
     private SpriteOutline spriteOutline;
@@ -33,13 +34,23 @@ public class WorldItem : MonoBehaviour {
     private int minSize = 4;
     public int MinSize { get { return minSize; } }
 
-    // TODO TEXT
+    private bool placed = false;
+
+    private int inputCostValue;
+
+    private int outputGenerationValue;
+
+    private GameItem gameItem;
+
 
     public void Init(GameItem item, int inputCount, int outputCount)
     {
-        spriteRenderer.sprite = item.sprite;
-        spriteRendererInputIcon.sprite = ResourceManager.main.GetResource(item.inputType).sprite;
-        spriteRendererOutputIcon.sprite = ResourceManager.main.GetResource(item.outputType).sprite;
+        gameItem = item;
+        spriteRenderer.sprite = gameItem.sprite;
+        spriteRendererInputIcon.sprite = ResourceManager.main.GetResource(gameItem.inputType).sprite;
+        spriteRendererOutputIcon.sprite = ResourceManager.main.GetResource(gameItem.outputType).sprite;
+        inputCostValue = inputCount;
+        outputGenerationValue = outputCount;
         textMeshInputCount.text = "" + inputCount;
         textMeshOutputCount.text = "" + outputCount;
         boxCollider2D.enabled = false;
@@ -48,15 +59,42 @@ public class WorldItem : MonoBehaviour {
     public void Place(Vector3 position)
     {
         transform.localPosition = position;
+        placed = true;
         boxCollider2D.enabled = true;
     }
 
-    void Start () {
-    
+    void Start()
+    {
+
     }
 
-    void Update () {
-    
+    [SerializeField]
+    [Range(0.2f, 5f)]
+    private float outputGenerationInterval = 1f;
+
+    private float outputGenerationTimer = 0f;
+
+    void Update()
+    {
+        if (placed)
+        {
+            if (outputGenerationTimer < outputGenerationInterval)
+            {
+                outputGenerationTimer += Time.deltaTime;
+            }
+            else
+            {
+                if (ResourceManager.main.WithdrawResource(inputCostValue, gameItem.inputType))
+                {
+                    outputGenerationTimer = 0f;
+                    ResourceManager.main.AddResource(outputGenerationValue, gameItem.outputType);
+                }
+                else
+                {
+                    // TODO BLINK
+                }
+            }
+        }
     }
 
     private void OnMouseDown()

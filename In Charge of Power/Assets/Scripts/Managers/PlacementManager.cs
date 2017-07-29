@@ -35,6 +35,10 @@ public class PlacementManager : MonoBehaviour
 
     public bool PlaceItem(WorldItem item, MeshCollisionHandler placementTarget)
     {
+        if (item == null)
+        {
+            return false;
+        }
         if (item.MinSize <= placementTarget.Size)
         {
             selectedItem.Place(new Vector3(placementTarget.LowestX, placementTarget.LowestY, 0f));
@@ -71,6 +75,6 @@ public class PlacementManager : MonoBehaviour
         // TODO CHECK FOR CURRENTLY SELECTED ITEM
         selectedItem = Instantiate(item.prefab);
         selectedItem.transform.SetParent(placementContainer, false);
-        item.prefab.Init(item, inputCount, outputCount);
+        selectedItem.Init(item, inputCount, outputCount);
     }
 }
