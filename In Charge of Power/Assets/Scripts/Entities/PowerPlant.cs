@@ -7,6 +7,9 @@ using System.Collections;
 
 public class PowerPlant : MonoBehaviour {
 
+    [SerializeField]
+    private SpriteOutline spriteOutline;
+
     void Start () {
     
     }
@@ -23,11 +26,13 @@ public class PowerPlant : MonoBehaviour {
     private void OnMouseEnter()
     {
         CursorManager.main.SetCursor(CursorType.Pointer);
+        spriteOutline.EnableOutline();
     }
 
     private void OnMouseExit()
     {
         CursorManager.main.SetCursor(CursorType.Default);
+        spriteOutline.DisableOutline();
     }
 
     private void OnMouseUp()

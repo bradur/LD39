@@ -50,35 +50,14 @@ public class TiledMesh : MonoBehaviour
     [SerializeField]
     private GameObject waterPrefab;
 
-    [SerializeField]
-    private TextAsset mapFile;
-
-    [SerializeField]
-    private Material groundMaterial;
-
     private void Start()
     {
-        TmxMap map = new TmxMap(mapFile.text, "unused");
-        for (int index = 0; index < map.Layers.Count; index += 1)
-        {
-            TmxLayer layer = map.Layers[index];
-            Init(map.Width, map.Height, layer, groundMaterial, transform);
-        }
+
     }
 
-    public void Init(int width, int height, TmxLayer layer, Material material, Transform wallParent)
+    public void Init(int width, int height, TmxLayer layer, Material material, float zPos)
     {
-        foreach (Transform child in wallParent)
-        {
-            if (child.gameObject.tag == "FactoryFloorContainer")
-            {
-                wallContainer = child;
-            }
-            if (child.gameObject.tag == "WaterContainer")
-            {
-                waterContainer = child;
-            }
-        }
+
         meshFilter = GetComponent<MeshFilter>();
         meshRenderer = GetComponent<MeshRenderer>();
         meshCollider = GetComponent<MeshCollider>();
@@ -86,6 +65,7 @@ public class TiledMesh : MonoBehaviour
         tileSize = unitSize / tilesPerSide;
         CalculateTiles();
         InitMesh(width, height);
+        transform.position = new Vector3(transform.position.x, transform.position.y, zPos);
         DrawMesh(width, height, layer);
         UpdateMesh();
         //gameObject.isStatic = true;
@@ -141,14 +121,14 @@ public class TiledMesh : MonoBehaviour
                 DrawVertex(index + 4, currentPosition, unitSize, unitSize);
                 DrawVertex(index + 3, currentPosition, 0, unitSize);
                 AssignUv(index, tiles[tileId], tileSize);
-                if (layerType == LayerType.FactoryFloor)
+                /*if (layerType == LayerType.FactoryFloor)
                 {
                     SpawnFactoryFloor(tileCountX, tileCountZ, tile.X, tile.Y);
                 }
                 else if (layerType == LayerType.Water)
                 {
                     SpawnWater(tileCountX, tileCountZ, tile.X, tile.Y);
-                }
+                }*/
                 index += 6;
             }
 
