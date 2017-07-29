@@ -1,8 +1,8 @@
 [ ] UI
     [ ] Hover system
-        [ ] Show selected component
+        [x] Show selected component
         [ ] Cancel (esc / cancel button)
-        [ ] Snap to grid when hovering & fits
+        [x] Snap to grid when hovering & fits
         [x] Cursor with at least default & pointer types
 
     [ ] Dashboard
@@ -18,6 +18,7 @@
 [ ] Game
     [ ] Shop
         [ ] Buy a component
+            [x] Check money, if enough allow buy
             [ ] Money back if cancel
         [ ] Once placed, sell for half
 
@@ -52,9 +53,9 @@
             [ ] Level 2
 
     [ ] Resource icons
-        [ ] Power
+        [x] Power
         [ ] Money
-        [ ] Coal
+        [x] Coal
         [ ] Nuclear
         [ ] Water
         [ ] Wind

@@ -8,6 +8,11 @@ TagManager:
   - WaterContainer
   - FactoryFloorContainer
   - CursorManager
+  - MoneyManager
+  - UIManager
+  - PlacementManager
+  - ItemManager
+  - ResourceManager
   layers:
   - Default
   - TransparentFX

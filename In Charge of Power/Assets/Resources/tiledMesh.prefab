@@ -19,12 +19,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4180605171004234}
+  - component: {fileID: 114419089152567558}
+  - component: {fileID: 114414135078648768}
   - component: {fileID: 64689113532264314}
   - component: {fileID: 23776733086156166}
   - component: {fileID: 33329310033692882}
-  - component: {fileID: 114419089152567558}
   m_Layer: 0
-  m_Name: BackgroundContainer
+  m_Name: tiledMesh
   m_TagString: BackgroundContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +97,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
+--- !u!114 &114414135078648768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1732252195648136}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796a8c7568863874e95396907eb6619b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 0.41911763, g: 1, b: 0.4711966, a: 1}
 --- !u!114 &114419089152567558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,5 +125,3 @@ MonoBehaviour:
   wallPrefab: {fileID: 1865348682688878, guid: 8cb9a5e8a02ba624fa8871a2a61f4234, type: 2}
   waterPrefab: {fileID: 1865348682688878, guid: 8cb9a5e8a02ba624fa8871a2a61f4234,
     type: 2}
-  mapFile: {fileID: 4900000, guid: 1dbcbf2518284a04ebaa0081ec51d472, type: 3}
-  groundMaterial: {fileID: 2100000, guid: b22fc082b5c13c846b70807723ae0887, type: 2}

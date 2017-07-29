@@ -50,6 +50,9 @@ public class TiledMesh : MonoBehaviour
     [SerializeField]
     private GameObject waterPrefab;
 
+    private int width;
+    private int height;
+
     private void Start()
     {
 
@@ -57,7 +60,8 @@ public class TiledMesh : MonoBehaviour
 
     public void Init(int width, int height, TmxLayer layer, Material material, float zPos)
     {
-
+        this.width = width;
+        this.height = height;
         meshFilter = GetComponent<MeshFilter>();
         meshRenderer = GetComponent<MeshRenderer>();
         meshCollider = GetComponent<MeshCollider>();
@@ -100,19 +104,26 @@ public class TiledMesh : MonoBehaviour
         //Vector3 startingPosition = new Vector3(-tileCountX / 2 - unitSize / 2, 0f, -tileCountZ / 2 - unitSize / 2);
         Vector3 startingPosition = new Vector3(-unitSize / 2, 0f, -unitSize / 2);
         int index = 0;
-
+        LayerType layerType = (LayerType)Tools.IntParseFast(layer.Properties["Type"]);
+        int numTiles = 0;
+        float highestX = -100f;
+        float highestY = -100f;
         for (int z = 0; z < tileCountZ; z++)
         {
             for (int x = 0; x < tileCountX; x++)
             {
-                LayerType layerType = (LayerType)Tools.IntParseFast(layer.Properties["Type"]);
                 TmxLayerTile tile = layer.Tiles[(tileCountZ - z - 1) * tileCountX + x];
+                float xPos = startingPosition.x + x * unitSize;
+                float yPos = startingPosition.z + z * unitSize;
                 int tileId = tile.Gid - 1;
                 if (tileId == -1)
                 {
                     continue;
                 }
-                Vector3 currentPosition = new Vector3(startingPosition.x + x * unitSize, startingPosition.y, startingPosition.z + z * unitSize);
+                highestX = highestX == -100f ? tile.X : (highestX < tile.X ? tile.X : highestX);
+                highestY = highestY == -100f ? tile.Y : (highestY < tile.Y ? tile.Y : highestY);
+                numTiles += 1;
+                Vector3 currentPosition = new Vector3(xPos, startingPosition.y, yPos);
                 DrawVertex(index + 2, currentPosition);
                 DrawVertex(index + 1, currentPosition, unitSize);
                 DrawVertex(index, currentPosition, unitSize, unitSize);
@@ -121,17 +132,20 @@ public class TiledMesh : MonoBehaviour
                 DrawVertex(index + 4, currentPosition, unitSize, unitSize);
                 DrawVertex(index + 3, currentPosition, 0, unitSize);
                 AssignUv(index, tiles[tileId], tileSize);
-                /*if (layerType == LayerType.FactoryFloor)
-                {
-                    SpawnFactoryFloor(tileCountX, tileCountZ, tile.X, tile.Y);
-                }
-                else if (layerType == LayerType.Water)
+                /*else if (layerType == LayerType.Water)
                 {
                     SpawnWater(tileCountX, tileCountZ, tile.X, tile.Y);
                 }*/
                 index += 6;
             }
 
+        }
+        if (layerType == LayerType.FactoryFloor)
+        {
+            //SpawnFactoryFloor(tileCountX, tileCountZ, tile.X, tile.Y);
+            MeshCollisionHandler meshCollisionHandler = GetComponent<MeshCollisionHandler>();
+            meshCollisionHandler.name = string.Format("mch: {0}", layer.Name);
+            meshCollisionHandler.Init(numTiles, highestX, this.height - highestY);
         }
     }
 

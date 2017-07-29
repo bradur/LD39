@@ -5,10 +5,35 @@
 using UnityEngine;
 using System.Collections;
 
-public class PowerPlant : MonoBehaviour {
+public class WorldItem : MonoBehaviour {
 
     [SerializeField]
     private SpriteOutline spriteOutline;
+
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+
+    [SerializeField]
+    private BoxCollider2D boxCollider2D;
+
+    [SerializeField]
+    [Range(2, 10)]
+    private int minSize = 4;
+    public int MinSize { get { return minSize; } }
+
+    // TODO TEXT
+
+    public void Init(Sprite sprite)
+    {
+        spriteRenderer.sprite = sprite;
+        boxCollider2D.enabled = false;
+    }
+
+    public void Place(Vector3 position)
+    {
+        transform.localPosition = position;
+        boxCollider2D.enabled = true;
+    }
 
     void Start () {
     

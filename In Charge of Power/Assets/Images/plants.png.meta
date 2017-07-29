@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 43a6c25fe2369794ab339aebc35cd1f2
-timeCreated: 1501303886
+timeCreated: 1501335401
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: power_plant_1
+    21300002: plants_0
+    21300004: Output
+    21300006: Input
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -100,13 +103,41 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: power_plant_1
+      name: plants_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 194
-        width: 81
-        height: 62
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Output
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 26
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Input
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 0
+        width: 19
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
