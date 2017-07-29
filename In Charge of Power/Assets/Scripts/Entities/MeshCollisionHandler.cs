@@ -21,12 +21,12 @@ public class MeshCollisionHandler : MonoBehaviour
     private int size = 0;
     public int Size { get { return size; } }
 
-    private float highestX;
-    public float HighestX { get { return highestX; } }
+    private float lowestX;
+    public float LowestX { get { return lowestX; } }
 
-    private float highestY;
+    private float lowestY;
 
-    public float HighestY { get { return highestY; } }
+    public float LowestY { get { return lowestY; } }
 
 
     void Start()
@@ -38,11 +38,11 @@ public class MeshCollisionHandler : MonoBehaviour
 
     }
 
-    public void Init(int size, float highestX, float highestY)
+    public void Init(int size, float lowestX, float lowestY)
     {
         this.size = size;
-        this.highestX = highestX;
-        this.highestY = highestY;
+        this.lowestX = lowestX;
+        this.lowestY = lowestY;
         meshRenderer = GetComponent<MeshRenderer>();
         originalColor = meshRenderer.material.color;
         allow = true;
@@ -52,7 +52,6 @@ public class MeshCollisionHandler : MonoBehaviour
     {
         if (allow)
         {
-            DebugLogger.Log("You entered!");
             WorldItem item = PlacementManager.main.GetSelectedItem();
             if (item != null && item.MinSize <= size)
             {
@@ -65,8 +64,13 @@ public class MeshCollisionHandler : MonoBehaviour
     {
         if (allow)
         {
-            DebugLogger.Log("You clicked!");
-            PlacementManager.main.PlaceItem(PlacementManager.main.GetSelectedItem(), this);
+            if (PlacementManager.main.PlaceItem(PlacementManager.main.GetSelectedItem(), this))
+            {
+                meshRenderer.material.color = originalColor;
+            } else
+            {
+                // TODO unallowed placement
+            }
         }
     }
 
@@ -74,7 +78,6 @@ public class MeshCollisionHandler : MonoBehaviour
     {
         if (allow)
         {
-            DebugLogger.Log("You exited!");
             meshRenderer.material.color = originalColor;
         }
     }

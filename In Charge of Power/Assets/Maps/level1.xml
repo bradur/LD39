@@ -16,7 +16,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzqENAAAIBDHYf2kMA6DIizY5f1UAAHDTW6r0PwAAAP4MUsgABQ==
+   eJztziEOAAAIxDD4/6exSBQ50SbzqwIAgJteJUr/AwAA4M8Ab6AABw==
   </data>
  </layer>
  <layer name="FactoryFloor1" width="40" height="40">
@@ -24,7 +24,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztziEOAAAIxDD4/6cxeBw50SbzqwIAALj1lir9DwAA+DVKyAAF
+   eJztziEOAAAIxDD4/6exOBw50SbzqwIAALj1KlH6HwAA8GsAY6AABw==
   </data>
  </layer>
  <layer name="FactoryFloor2" width="40" height="40">
@@ -32,7 +32,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzqENAAAIBDHYf2kMjgF40SbnrwoAAODqLVX6HwAA8GsASwgABQ==
+   eJztzrEJAAAIBDHdf2lbwQH8IoHrrwoAAODqVaL0PwAA4NcAZAAABw==
   </data>
  </layer>
  <layer name="FactoryFloor3" width="40" height="40">
@@ -40,7 +40,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzqENADAQxLB0/6VLfogDthSeAgAAqHetWv8DAAC2fEtIAAU=
+   eJztzqENADAQxLB0/6VLf4QDthSeAgAAqHdatP4HAABs+WRgAAc=
   </data>
  </layer>
  <layer name="FactoryFloor4" width="40" height="40">
@@ -48,7 +48,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzqENAAAMw7Du/6dHdkLBgC2FJwEAgI65vvr+BwAAQM8CUkgABQ==
+   eJztzqENAAAMw7Du/6dHd0DBgC2FJwEAgI45ffT9DwAAgJ4FbuAABw==
   </data>
  </layer>
  <layer name="FactoryFloor5" width="40" height="40">
@@ -56,7 +56,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzrEJAAAIBDHdf2kbJxCELxK4/qoAAOCmt1TpfwAAAPwZUogABQ==
+   eJztzrENAAAMwjD6/9NdOYHBlrInAQBg1VWL/AEAALDqAZ0wAAo=
   </data>
  </layer>
  <layer name="Water" width="40" height="40">

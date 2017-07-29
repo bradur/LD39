@@ -17,15 +17,31 @@ public class WorldItem : MonoBehaviour {
     private BoxCollider2D boxCollider2D;
 
     [SerializeField]
+    private SpriteRenderer spriteRendererInputIcon;
+
+    [SerializeField]
+    private TextMesh textMeshInputCount;
+
+    [SerializeField]
+    private SpriteRenderer spriteRendererOutputIcon;
+
+    [SerializeField]
+    private TextMesh textMeshOutputCount;
+
+    [SerializeField]
     [Range(2, 10)]
     private int minSize = 4;
     public int MinSize { get { return minSize; } }
 
     // TODO TEXT
 
-    public void Init(Sprite sprite)
+    public void Init(GameItem item, int inputCount, int outputCount)
     {
-        spriteRenderer.sprite = sprite;
+        spriteRenderer.sprite = item.sprite;
+        spriteRendererInputIcon.sprite = ResourceManager.main.GetResource(item.inputType).sprite;
+        spriteRendererOutputIcon.sprite = ResourceManager.main.GetResource(item.outputType).sprite;
+        textMeshInputCount.text = "" + inputCount;
+        textMeshOutputCount.text = "" + outputCount;
         boxCollider2D.enabled = false;
     }
 

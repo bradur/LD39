@@ -106,8 +106,8 @@ public class TiledMesh : MonoBehaviour
         int index = 0;
         LayerType layerType = (LayerType)Tools.IntParseFast(layer.Properties["Type"]);
         int numTiles = 0;
-        float highestX = -100f;
-        float highestY = -100f;
+        float lowestX = -100f;
+        float lowestY = -100f;
         for (int z = 0; z < tileCountZ; z++)
         {
             for (int x = 0; x < tileCountX; x++)
@@ -120,8 +120,8 @@ public class TiledMesh : MonoBehaviour
                 {
                     continue;
                 }
-                highestX = highestX == -100f ? tile.X : (highestX < tile.X ? tile.X : highestX);
-                highestY = highestY == -100f ? tile.Y : (highestY < tile.Y ? tile.Y : highestY);
+                lowestX = lowestX == -100f ? tile.X : (lowestX > tile.X ? tile.X : lowestX);
+                lowestY = lowestY == -100f ? tile.Y : (lowestY > tile.Y ? tile.Y : lowestY);
                 numTiles += 1;
                 Vector3 currentPosition = new Vector3(xPos, startingPosition.y, yPos);
                 DrawVertex(index + 2, currentPosition);
@@ -145,7 +145,7 @@ public class TiledMesh : MonoBehaviour
             //SpawnFactoryFloor(tileCountX, tileCountZ, tile.X, tile.Y);
             MeshCollisionHandler meshCollisionHandler = GetComponent<MeshCollisionHandler>();
             meshCollisionHandler.name = string.Format("mch: {0}", layer.Name);
-            meshCollisionHandler.Init(numTiles, highestX, this.height - highestY);
+            meshCollisionHandler.Init(numTiles, lowestX, this.height - lowestY);
         }
     }
 

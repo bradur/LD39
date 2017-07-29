@@ -33,16 +33,18 @@ public class PlacementManager : MonoBehaviour
 
     }
 
-    public void PlaceItem(WorldItem item, MeshCollisionHandler placementTarget)
+    public bool PlaceItem(WorldItem item, MeshCollisionHandler placementTarget)
     {
         if (item.MinSize <= placementTarget.Size)
         {
-            selectedItem.Place(new Vector3(placementTarget.HighestX, placementTarget.HighestY, 0f));
+            selectedItem.Place(new Vector3(placementTarget.LowestX, placementTarget.LowestY, 0f));
             selectedItem = null;
+            return true;
         }
         else
         {
             SoundManager.main.PlaySound(SoundType.CantPlaceThere);
+            return false;
         }
     }
 
@@ -64,11 +66,11 @@ public class PlacementManager : MonoBehaviour
         return selectedItem;
     }
 
-    public void SelectItem(GameItem item)
+    public void SelectItem(GameItem item, int inputCount, int outputCount)
     {
         // TODO CHECK FOR CURRENTLY SELECTED ITEM
         selectedItem = Instantiate(item.prefab);
         selectedItem.transform.SetParent(placementContainer, false);
-        item.prefab.Init(item.sprite);
+        item.prefab.Init(item, inputCount, outputCount);
     }
 }

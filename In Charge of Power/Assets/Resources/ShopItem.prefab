@@ -498,11 +498,11 @@ MonoBehaviour:
   inputType: 1
   txtInputCount: {fileID: 114470590241489468}
   imgInput: {fileID: 114418277591687642}
-  inputCount: 1
+  inputCount: 2
   outputType: 5
   imgOutput: {fileID: 114829784353916230}
   txtOutputCount: {fileID: 114758015067236472}
-  outputCount: 1
+  outputCount: 4
 --- !u!114 &114804821044009280
 MonoBehaviour:
   m_ObjectHideFlags: 1

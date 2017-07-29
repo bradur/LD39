@@ -73,7 +73,7 @@ public class ShopItem : MonoBehaviour
     {
         if (MoneyManager.main.Withdraw(cost))
         {
-            PlacementManager.main.SelectItem(ItemManager.main.GetItem(itemType));
+            PlacementManager.main.SelectItem(ItemManager.main.GetItem(itemType), inputCount, outputCount);
             DebugLogger.Log(string.Format("You bought a \"{0}\" with {1} dollarydoos.", itemName, cost));
             Kill();
         }
