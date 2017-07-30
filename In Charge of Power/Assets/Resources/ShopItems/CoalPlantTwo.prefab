@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114234548943806894}
   - component: {fileID: 114473859095059280}
   m_Layer: 5
-  m_Name: CoalPlantOne_shop
+  m_Name: CoalPlantTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -922,9 +922,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79f7421a73f4864494dc4141694d7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 200
-  itemName: Coal Plant
-  itemType: 1
+  cost: 900
+  itemName: Coal Plant 2
+  itemType: 2
   inputType: 1
   requiredLayer: 3
   imgItem: {fileID: 114001464750205338}
@@ -932,11 +932,11 @@ MonoBehaviour:
   txtCost: {fileID: 114867127216156320}
   txtInputCount: {fileID: 114470590241489468}
   imgInput: {fileID: 114804821044009280}
-  inputCount: 5
+  inputCount: 20
   outputType: 5
   imgOutput: {fileID: 114041157407614184}
   txtOutputCount: {fileID: 114758015067236472}
-  outputCount: 7
+  outputCount: 35
   bg: {fileID: 1437846024262994}
   shopInfo: {fileID: 1393636135054608}
 --- !u!114 &114804821044009280
@@ -1319,8 +1319,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 26.8, y: -18.276062}
-  m_SizeDelta: {x: 21, y: 11.503998}
+  m_AnchoredPosition: {x: 21.35, y: -18.276062}
+  m_SizeDelta: {x: 30.15, y: 11.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224363468852952352
 RectTransform:
@@ -1338,7 +1338,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 38, y: -25.3}
-  m_SizeDelta: {x: 65.758, y: 41.44}
+  m_SizeDelta: {x: 94.41, y: 41.44}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224402950306215052
 RectTransform:
@@ -1394,8 +1394,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 38.3, y: -25.8}
-  m_SizeDelta: {x: 66.454, y: 41.44}
+  m_AnchoredPosition: {x: 38, y: -25.8}
+  m_SizeDelta: {x: 94.41, y: 41.44}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224525837646537404
 RectTransform:
@@ -1544,8 +1544,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 26.91, y: 6.5}
-  m_SizeDelta: {x: 21.08, y: 11.5}
+  m_AnchoredPosition: {x: 21.35, y: 6.5}
+  m_SizeDelta: {x: 30.15, y: 11.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224947374242055952
 RectTransform:

@@ -34,12 +34,27 @@ public class UIManager : MonoBehaviour
 
     public void ShowMouseMessage(string message)
     {
-        messageDisplay.SpawnStaticMessage(Input.mousePosition, defaultMessageSprite, message, true);
+        messageDisplay.SpawnStaticMessage(Input.mousePosition, defaultMessageSprite, message, true, true);
+    }
+
+    public void ShowMouseMessage(string message, bool right)
+    {
+        messageDisplay.SpawnStaticMessage(Input.mousePosition, defaultMessageSprite, message, true, right);
     }
 
     public void ShowNotification(string message)
     {
         messageDisplay.SpawnMessage(defaultNotificationPosition.position, defaultMessageSprite, message);
+    }
+
+    public void ShowNotification(string message, bool stay) {
+        if (stay)
+        {
+            messageDisplay.SpawnMessage(defaultNotificationPosition.position, defaultMessageSprite, message, stay);
+        } else
+        {
+            ShowNotification(message);
+        }
     }
 
     public void ShowDefaultMessage(Vector2 position, string message)
@@ -84,7 +99,10 @@ public class UIManager : MonoBehaviour
 
     public void ClearStaticMessage()
     {
-        messageDisplay.ClearStaticMessage();
+        if (!GameManager.main.GameIsOver)
+        {
+            messageDisplay.ClearStaticMessage();
+        }
     }
 
     [SerializeField]
@@ -125,35 +143,40 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private HUDMoney hudMoney;
 
-    void SetMoney(int value)
+    void SetMoney(float value)
     {
         hudMoney.SetValue(value);
     }
 
-    void Topup(int value)
+    void Topup(float value)
     {
         hudMoney.Topup(value);
     }
 
-    void Withdraw(int value)
+    void Withdraw(float value)
     {
         hudMoney.Withdraw(value);
+    }
+
+    public void SetMoneyTime(float value)
+    {
+        hudMoney.SetTimeValue(value);
     }
 
     [SerializeField]
     private HUDPower hudPower;
 
-    void AddPower(int amount)
+    void AddPower(float amount)
     {
         hudPower.AddPower(amount);
     }
 
-    void DrainPower(int amount)
+    void DrainPower(float amount)
     {
         hudPower.DrainPower(amount);
     }
 
-    void SetPower(int amount)
+    void SetPower(float amount)
     {
         hudPower.SetPower(amount);
     }
@@ -180,6 +203,30 @@ public class UIManager : MonoBehaviour
         else if (resourceType == ResourceType.Nuclear)
         {
             hudNuclear.Withdraw(amount);
+        }
+    }
+
+    public void WithdrawResource(float amount, ResourceType resourceType)
+    {
+        if (resourceType == ResourceType.Power)
+        {
+            DrainPower(amount);
+        }
+        else if (resourceType == ResourceType.Money)
+        {
+            Withdraw(amount);
+        }
+    }
+
+    public void AddResource(float amount, ResourceType resourceType)
+    {
+        if (resourceType == ResourceType.Power)
+        {
+            AddPower(amount);
+        }
+        else if (resourceType == ResourceType.Money)
+        {
+            Topup(amount);
         }
     }
 
@@ -221,5 +268,36 @@ public class UIManager : MonoBehaviour
         {
             hudNuclear.SetValue(amount);
         }
+    }
+
+
+    public void SetResource(float amount, ResourceType resourceType)
+    {
+        if (resourceType == ResourceType.Power)
+        {
+            SetPower(amount);
+        }
+        else if (resourceType == ResourceType.Money)
+        {
+            SetMoney(amount);
+        }
+    }
+
+    [SerializeField]
+    private GameObject gameOverScreen;
+
+    public void ShowGameOverScreen ()
+    {
+        ClearStaticMessage();
+        gameOverScreen.SetActive(true);
+    }
+
+    [SerializeField]
+    private GameObject theEndScreen;
+
+    public void ShowTheEndScreen()
+    {
+        ClearStaticMessage();
+        theEndScreen.SetActive(true);
     }
 }

@@ -41,4 +41,11 @@ public class HUDCitizens : MonoBehaviour {
         this.timeValue = value;
         txtTimeComponent.text = string.Format("{0:#.00}", this.timeValue);
     }
+
+
+    public void ShowStaticTimeMessage()
+    {
+        UIManager.main.ShowMouseMessage(string.Format("New citizens per second. Grows as more citizens move into the city."), false);
+    }
+
 }

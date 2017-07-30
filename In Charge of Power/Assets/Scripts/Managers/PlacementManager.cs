@@ -65,6 +65,7 @@ public class PlacementManager : MonoBehaviour
             selectedItem.Place(new Vector3(placementTarget.LowestX, placementTarget.LowestY, 0f), placementTarget);
             placedItems.Add(selectedItem);
             PowerManager.main.RecalculateRate();
+            MoneyManager.main.RecalculateRate();
             isPlacing = false;
             selectedItem = null;
             displayItem.Kill();
@@ -82,6 +83,7 @@ public class PlacementManager : MonoBehaviour
     {
         placedItems.Remove(item);
         PowerManager.main.RecalculateRate();
+        MoneyManager.main.RecalculateRate();
     }
 
     void Update()
@@ -99,14 +101,29 @@ public class PlacementManager : MonoBehaviour
         }
     }
 
+    public void DisplaySellBack()
+    {
+        if (isPlacing)
+        {
+            CursorManager.main.SetCursor(CursorType.Pointer);
+            UIManager.main.ShowMouseMessage(string.Format(
+                "Sell {0} back for full price (${1}) before placing it.", displayItem.ItemName, displayItem.Cost
+            ), true);
+        }
+    }
+
     public float GetRate(ResourceType resourceType)
     {
         float rate = 0f;
         for (int i = 0; i < placedItems.Count; i += 1)
         {
-            if (placedItems[i].GameItem.outputType == resourceType)
+            if (placedItems[i].GameItem.outputType == resourceType && placedItems[i].CanProduce)
             {
-                rate += placedItems[i].GetRate();
+                rate += placedItems[i].GetOutputRate();
+            }
+            else if (placedItems[i].GameItem.inputType == resourceType && placedItems[i].CanProduce)
+            {
+                rate += placedItems[i].GetInputRate();
             }
         }
         return rate;
@@ -115,6 +132,19 @@ public class PlacementManager : MonoBehaviour
     public WorldItem GetSelectedItem()
     {
         return selectedItem;
+    }
+
+    public void UnselectItem()
+    {
+        if (selectedItem != null)
+        {
+            MoneyManager.main.Topup(displayItem.Cost);
+            selectedItem.Kill();
+            displayItem.Kill();
+            isPlacing = false;
+            displayItem = null;
+            selectedItem = null;
+        }
     }
 
     public void SelectItem(ShopItem shopItem, int inputCount, int outputCount)

@@ -5,7 +5,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraZoomManager : MonoBehaviour {
+public class CameraZoomManager : MonoBehaviour
+{
 
     [SerializeField]
     private Camera targetCamera;
@@ -26,23 +27,28 @@ public class CameraZoomManager : MonoBehaviour {
     [Range(0.05f, 1f)]
     float zoomStep = 0.05f;
 
-    void Start () {
-    
+    void Start()
+    {
+
     }
 
-    void Update () {
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll > 0f)
+    void Update()
+    {
+        if (!GameManager.main.GameIsOver)
         {
-            // scroll up
-            zoomLevel -= zoomStep;
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            if (scroll > 0f)
+            {
+                // scroll up
+                zoomLevel -= zoomStep;
+            }
+            else if (scroll < 0f)
+            {
+                // scroll down
+                zoomLevel += zoomStep;
+            }
+            zoomLevel = Mathf.Clamp(zoomLevel, minZoomLevel, maxZoomLevel);
+            targetCamera.orthographicSize = zoomLevel;
         }
-        else if (scroll < 0f)
-        {
-            // scroll down
-            zoomLevel += zoomStep;
-        }
-        zoomLevel = Mathf.Clamp(zoomLevel, minZoomLevel, maxZoomLevel);
-        targetCamera.orthographicSize = zoomLevel;
     }
 }

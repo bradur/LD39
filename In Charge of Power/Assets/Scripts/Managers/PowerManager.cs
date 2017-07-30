@@ -24,12 +24,12 @@ public class PowerManager : MonoBehaviour
     }
 
     [SerializeField]
-    [Range(0, 1000)]
-    private int power = 0;
+    [Range(0f, 1000f)]
+    private float power = 0;
 
     [SerializeField]
-    [Range(1, 10)]
-    private int passivePowerDrainPerCitizen = 1;
+    [Range(0.01f, 10f)]
+    private float passivePowerDrainPerCitizen = 0.01f;
 
     [SerializeField]
     [Range(1, 10)]
@@ -46,13 +46,13 @@ public class PowerManager : MonoBehaviour
         UIManager.main.SetResource(power, ResourceType.Power);
     }
 
-    public void AddPower(int amount)
+    public void AddPower(float amount)
     {
         power += amount;
         UIManager.main.AddResource(amount, ResourceType.Power);
     }
 
-    public bool DrainPower(int amount)
+    public bool DrainPower(float amount)
     {
         // TODO CHECK FOR ZERO
         if ((power - amount) >= 0)
@@ -61,8 +61,16 @@ public class PowerManager : MonoBehaviour
             UIManager.main.WithdrawResource(amount, ResourceType.Power);
             ResourceManager.main.AddResource(amount * moneyPerPower, ResourceType.Money);
             return true;
+        } else
+        {
+            GameManager.main.GameOver();
         }
         return false;
+    }
+
+    public int GetMoneyPerPower()
+    {
+        return moneyPerPower;
     }
 
     public void RecalculateRate()
@@ -75,7 +83,7 @@ public class PowerManager : MonoBehaviour
         return GetPowerDrainPerCitizen() / passivePowerDrainInterval;
     }
 
-    public int GetPowerDrainPerCitizen()
+    public float GetPowerDrainPerCitizen()
     {
         return -passivePowerDrainPerCitizen;
     }

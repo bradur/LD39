@@ -9,6 +9,22 @@ using System.Collections.Generic;
 
 public class ShopManager : MonoBehaviour {
 
+
+    public static ShopManager main;
+
+    void Awake()
+    {
+        if (GameObject.FindGameObjectsWithTag("ShopManager").Length == 0)
+        {
+            main = this;
+            gameObject.tag = "ShopManager";
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     [SerializeField]
     private Text txtComponent;
     [SerializeField]
@@ -43,7 +59,19 @@ public class ShopManager : MonoBehaviour {
                 rectTransform.anchoredPosition.x,
                 currentY
             );
-            currentY -= rectTransform.sizeDelta.y + marginVertical;
+            currentY -= rectTransform.sizeDelta.y * rectTransform.localScale.y + marginVertical * rectTransform.localScale.y;
         }
+    }
+
+    public ShopItem GetItem(LayerType layerType)
+    {
+        foreach(ShopItem item in shopItems)
+        {
+            if (item.RequiredLayer == layerType)
+            {
+                return item;
+            }
+        }
+        return null;
     }
 }

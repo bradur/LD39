@@ -39,9 +39,9 @@ GameObject:
   - component: {fileID: 222549557966486234}
   - component: {fileID: 114791116379031840}
   - component: {fileID: 114234548943806894}
-  - component: {fileID: 114473859095059280}
+  - component: {fileID: 114107959379949360}
   m_Layer: 5
-  m_Name: CoalPlantOne_shop
+  m_Name: WaterTurbineTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,6 +111,23 @@ GameObject:
   - component: {fileID: 114454323927740706}
   m_Layer: 5
   m_Name: CostText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1235444541089626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224093111021544152}
+  - component: {fileID: 222693403781288750}
+  - component: {fileID: 114000990643165758}
+  m_Layer: 5
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,6 +404,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114000990643165758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235444541089626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300010, guid: 43a6c25fe2369794ab339aebc35cd1f2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114001464750205338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,7 +450,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300002, guid: 43a6c25fe2369794ab339aebc35cd1f2, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 43a6c25fe2369794ab339aebc35cd1f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -509,6 +553,53 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114107959379949360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1106770905293686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114791116379031840}
+          m_MethodName: HoverIn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114791116379031840}
+          m_MethodName: HoverOut
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114119771892324054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -749,54 +840,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
---- !u!114 &114473859095059280
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1106770905293686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114791116379031840}
-          m_MethodName: HoverIn
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114791116379031840}
-          m_MethodName: HoverOut
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
+  m_Text: 
 --- !u!114 &114612386925798110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -883,7 +927,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 100
 --- !u!114 &114758487569551374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -922,21 +966,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79f7421a73f4864494dc4141694d7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 200
-  itemName: Coal Plant
-  itemType: 1
-  inputType: 1
-  requiredLayer: 3
+  cost: 500
+  itemName: Water Turbine 2
+  itemType: 6
+  inputType: 0
+  requiredLayer: 2
   imgItem: {fileID: 114001464750205338}
   txtName: {fileID: 114368422663002708}
   txtCost: {fileID: 114867127216156320}
   txtInputCount: {fileID: 114470590241489468}
   imgInput: {fileID: 114804821044009280}
-  inputCount: 5
+  inputCount: 0
   outputType: 5
   imgOutput: {fileID: 114041157407614184}
   txtOutputCount: {fileID: 114758015067236472}
-  outputCount: 7
+  outputCount: 12
   bg: {fileID: 1437846024262994}
   shopInfo: {fileID: 1393636135054608}
 --- !u!114 &114804821044009280
@@ -1155,6 +1199,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1401227712861560}
+--- !u!222 &222693403781288750
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235444541089626}
 --- !u!222 &222795097944921520
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1219,13 +1269,31 @@ RectTransform:
   - {fileID: 224402950306215052}
   - {fileID: 224251099511185036}
   m_Father: {fileID: 224263075197596794}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -0.26, y: 3.300003}
   m_SizeDelta: {x: 189.34, y: 39.39}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!224 &224093111021544152
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235444541089626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224263075197596794}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -31.555, y: -13.4}
+  m_SizeDelta: {x: 63.11, y: 58.78}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224210114499221176
 RectTransform:
   m_ObjectHideFlags: 1
@@ -1277,13 +1345,14 @@ RectTransform:
   - {fileID: 224410359270144794}
   - {fileID: 224809348881482456}
   - {fileID: 224947374242055952}
+  - {fileID: 224093111021544152}
   - {fileID: 224024118303118436}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -177.8}
   m_SizeDelta: {x: 200, y: 170}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224289956074794076
@@ -1319,8 +1388,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 26.8, y: -18.276062}
-  m_SizeDelta: {x: 21, y: 11.503998}
+  m_AnchoredPosition: {x: 21.35, y: -18.276062}
+  m_SizeDelta: {x: 30.15, y: 11.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224363468852952352
 RectTransform:
@@ -1338,7 +1407,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 38, y: -25.3}
-  m_SizeDelta: {x: 65.758, y: 41.44}
+  m_SizeDelta: {x: 94.41, y: 41.44}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224402950306215052
 RectTransform:
@@ -1394,8 +1463,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 38.3, y: -25.8}
-  m_SizeDelta: {x: 66.454, y: 41.44}
+  m_AnchoredPosition: {x: 38, y: -25.8}
+  m_SizeDelta: {x: 94.41, y: 41.44}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224525837646537404
 RectTransform:
@@ -1488,8 +1557,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000065804, y: -0}
-  m_SizeDelta: {x: 179.28, y: 48.06}
+  m_AnchoredPosition: {x: 1.45, y: -0}
+  m_SizeDelta: {x: 132.76, y: 48.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224809348881482456
 RectTransform:
@@ -1544,8 +1613,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 26.91, y: 6.5}
-  m_SizeDelta: {x: 21.08, y: 11.5}
+  m_AnchoredPosition: {x: 21.35, y: 6.5}
+  m_SizeDelta: {x: 30.15, y: 11.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224947374242055952
 RectTransform:
@@ -1562,7 +1631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 13.4, y: 16.8}
+  m_AnchoredPosition: {x: 13.400002, y: 37.49998}
   m_SizeDelta: {x: 150, y: 110}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!224 &224955051008990682

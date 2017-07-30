@@ -46,12 +46,15 @@ public class CitizenManager : MonoBehaviour
     private int citizenBirthGrowthPercentage = 25;
 
     [SerializeField]
-    [Range(0.5f, 10f)]
+    [Range(1f, 500f)]
     private float firstWaveTimer = 2f;
 
     [SerializeField]
-    [Range(2, 20)]
+    [Range(2, 200)]
     private int firstWaveOfCitizens;
+
+    [SerializeField]
+    private bool DEBUG = false;
 
     private float CalculateNewCitizensMovingInPerSecond()
     {
@@ -75,7 +78,7 @@ public class CitizenManager : MonoBehaviour
 
     void Start()
     {
-
+        UIManager.main.ShowNotification(string.Format("The first new citizens will move into the city in {0} seconds!", (int)firstWaveTimer), true);
     }
 
     void Update()
@@ -83,28 +86,35 @@ public class CitizenManager : MonoBehaviour
         if (firstWaveTimer > 0f)
         {
             firstWaveTimer -= Time.deltaTime;
-            if (firstWaveTimer < 0f)
+            if (firstWaveTimer < 0f || DEBUG)
             {
+                if (DEBUG)
+                {
+                    firstWaveTimer = -1f;
+                }
                 FirstWaveMovesIn(firstWaveOfCitizens);
             }
         }
-        if (newCitizenMoveTimer < newCitizensMoveInterval)
-        {
-            newCitizenMoveTimer += Time.deltaTime;
-        }
         else
         {
-            newCitizenMoveTimer = 0f;
-            NewCitizensMoveIn();
-        }
-        if (newCitizenBirthTimer < newCitizenBirthInterval)
-        {
-            newCitizenBirthTimer += Time.deltaTime;
-        }
-        else
-        {
-            newCitizenBirthTimer = 0f;
-            NewCitizensAreBorn();
+            if (newCitizenMoveTimer < newCitizensMoveInterval)
+            {
+                newCitizenMoveTimer += Time.deltaTime;
+            }
+            else
+            {
+                newCitizenMoveTimer = 0f;
+                NewCitizensMoveIn();
+            }
+            if (newCitizenBirthTimer < newCitizenBirthInterval)
+            {
+                newCitizenBirthTimer += Time.deltaTime;
+            }
+            else
+            {
+                newCitizenBirthTimer = 0f;
+                NewCitizensAreBorn();
+            }
         }
     }
 
@@ -115,7 +125,7 @@ public class CitizenManager : MonoBehaviour
 
     void FirstWaveMovesIn(int newCitizens)
     {
-        amountOfCitizens += newCitizens;
+        AddCitizens(newCitizens);
         UIManager.main.AddCitizens(newCitizens);
         UIManager.main.ShowNotification(string.Format(
             "The first {0} citizens have moved into the city!",
@@ -128,12 +138,25 @@ public class CitizenManager : MonoBehaviour
     {
         UIManager.main.SetCitizensTime(CalculateNewCitizensMovingInPerSecond() + CalculateNewCitizensBeingBornPerSecond());
         PowerManager.main.RecalculateRate();
+        MoneyManager.main.RecalculateRate();
+    }
+
+    [SerializeField]
+    [Range(5, 500)]
+    int victoryCondition = 100;
+    void AddCitizens (int amount)
+    {
+        amountOfCitizens += amount;
+        if (amountOfCitizens >= victoryCondition)
+        {
+            GameManager.main.TheEnd();
+        }
     }
 
     void NewCitizensMoveIn()
     {
         int newCitizens = Mathf.Clamp(amountOfCitizens * citizenMoveGrowthPercentage / 100, 1, 100);
-        amountOfCitizens += newCitizens;
+        AddCitizens(newCitizens);
         UIManager.main.AddCitizens(newCitizens);
         UIManager.main.ShowNotification(string.Format(
             "{0} new citizen{1} {2} moved into the city!",
@@ -147,7 +170,7 @@ public class CitizenManager : MonoBehaviour
     void NewCitizensAreBorn()
     {
         int newCitizens = Mathf.Clamp(amountOfCitizens * citizenBirthGrowthPercentage / 100, 1, 100);
-        amountOfCitizens += newCitizens;
+        AddCitizens(newCitizens);
         UIManager.main.AddCitizens(newCitizens);
         UIManager.main.ShowNotification(string.Format(
             "{0} new citizen{1} {2} been born into the city!",

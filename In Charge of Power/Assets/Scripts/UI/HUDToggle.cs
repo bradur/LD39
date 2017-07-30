@@ -23,6 +23,9 @@ public class HUDToggle : MonoBehaviour
 
     private bool toggled = false;
 
+    [SerializeField]
+    private string tooltipText;
+
     private void Start()
     {
         if (txtComponent != null)
@@ -50,5 +53,10 @@ public class HUDToggle : MonoBehaviour
                 txtComponent.text = originalText;
             }
         }
+    }
+
+    public void ShowStaticMessage ()
+    {
+        UIManager.main.ShowMouseMessage(string.Format(tooltipText), false);
     }
 }

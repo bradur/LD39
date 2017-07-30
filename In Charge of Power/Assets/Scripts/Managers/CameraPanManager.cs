@@ -32,7 +32,7 @@ public class CameraPanManager : MonoBehaviour
     private float cameraMinX;
 
     [SerializeField]
-    [Range(3f, 20f)]
+    [Range(-5f, 20f)]
     private float cameraMaxY;
 
     [SerializeField]
@@ -55,21 +55,24 @@ public class CameraPanManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.mousePosition.x > (screenWidth - mouseMoveBoundary))
+        if (!GameManager.main.GameIsOver)
         {
-            MoveCamera(1, 0, Input.mousePosition.x - (screenWidth - mouseMoveBoundary));
-        }
-        if (Input.mousePosition.x < mouseMoveBoundary)
-        {
-            MoveCamera(-1, 0, Mathf.Abs(Input.mousePosition.x - mouseMoveBoundary));
-        }
-        if (Input.mousePosition.y > (screenHeight - mouseMoveBoundary))
-        {
-            MoveCamera(0, 1, Input.mousePosition.y - (screenHeight - mouseMoveBoundary));
-        }
-        if (Input.mousePosition.y < mouseMoveBoundary)
-        {
-            MoveCamera(0, -1, Mathf.Abs(Input.mousePosition.y - mouseMoveBoundary));
+            if (Input.mousePosition.x > (screenWidth - mouseMoveBoundary))
+            {
+                MoveCamera(1, 0, Input.mousePosition.x - (screenWidth - mouseMoveBoundary));
+            }
+            if (Input.mousePosition.x < mouseMoveBoundary)
+            {
+                MoveCamera(-1, 0, Mathf.Abs(Input.mousePosition.x - mouseMoveBoundary));
+            }
+            if (Input.mousePosition.y > (screenHeight - mouseMoveBoundary))
+            {
+                MoveCamera(0, 1, Input.mousePosition.y - (screenHeight - mouseMoveBoundary));
+            }
+            if (Input.mousePosition.y < mouseMoveBoundary)
+            {
+                MoveCamera(0, -1, Mathf.Abs(Input.mousePosition.y - mouseMoveBoundary));
+            }
         }
     }
 

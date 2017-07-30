@@ -82,6 +82,22 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+    public void AddResource(float amount, ResourceType resourceType)
+    {
+        if (resourceType == ResourceType.None)
+        {
+            return;
+        }
+        if (resourceType == ResourceType.Power)
+        {
+            PowerManager.main.AddPower(amount);
+        }
+        else if (resourceType == ResourceType.Money)
+        {
+            MoneyManager.main.Topup(amount);
+        }
+    }
+
     public bool WithdrawResource(int amount, ResourceType resourceType)
     {
         if (resourceType == ResourceType.None)

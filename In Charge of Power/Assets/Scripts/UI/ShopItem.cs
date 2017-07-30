@@ -94,18 +94,28 @@ public class ShopItem : MonoBehaviour
 
     public void HoverIn()
     {
-        if (MoneyManager.main.GetBalance() >= cost)
+        if (!GameManager.main.GameIsOver)
         {
-            CursorManager.main.SetCursor(CursorType.Pointer);
-            UIManager.main.ShowMouseMessage(string.Format(
-                "Buy {0} for ${1}", itemName, cost
-            ));
-        }
-        else
-        {
-            UIManager.main.ShowMouseMessage(string.Format(
-                "Not enough money (${0})", cost
-            ));
+            if (!PlacementManager.main.IsPlacing)
+            {
+                if (MoneyManager.main.GetBalance() >= cost)
+                {
+                    CursorManager.main.SetCursor(CursorType.Pointer);
+                    UIManager.main.ShowMouseMessage(string.Format(
+                        "Buy {0} for ${1}", itemName, cost
+                    ), true);
+                }
+                else
+                {
+                    UIManager.main.ShowMouseMessage(string.Format(
+                        "Not enough money (${0})", cost
+                    ), true);
+                }
+            }
+            else
+            {
+                PlacementManager.main.DisplaySellBack();
+            }
         }
     }
 
@@ -133,6 +143,19 @@ public class ShopItem : MonoBehaviour
         shopInfo.SetActive(false);
         GetComponent<Button>().enabled = false;
         GetComponent<EventTrigger>().enabled = false;
+        Image parentImage = GetComponent<Image>();
+        if (parentImage != null)
+        {
+            parentImage.raycastTarget = false;
+        }
+        foreach (Transform child in transform)
+        {
+            Image image = GetComponent<Image>();
+            if (image != null)
+            {
+                image.raycastTarget = false;
+            }
+        }
     }
 
     public void Kill()
@@ -143,15 +166,21 @@ public class ShopItem : MonoBehaviour
 
     public void Buy()
     {
-        if (MoneyManager.main.Withdraw(cost))
+        if (!GameManager.main.GameIsOver)
         {
-            PlacementManager.main.SelectItem(this, inputCount, outputCount);
-            DebugLogger.Log(string.Format("You bought a \"{0}\" with {1} dollarydoos.", itemName, cost));
-            //Kill();
-        }
-        else
-        {
-            SoundManager.main.PlaySound(SoundType.NotEnoughMoney);
+            if (MoneyManager.main.Withdraw(cost) && !PlacementManager.main.IsPlacing)
+            {
+                PlacementManager.main.SelectItem(this, inputCount, outputCount);
+                //Kill();
+            }
+            else
+            {
+                if (PlacementManager.main.IsPlacing)
+                {
+                    PlacementManager.main.UnselectItem();
+                }
+                SoundManager.main.PlaySound(SoundType.NotEnoughMoney);
+            }
         }
 
     }

@@ -9,8 +9,8 @@ public class MoneyManager : MonoBehaviour
 {
 
     [SerializeField]
-    [Range(0, 10000)]
-    private int money = 0;
+    [Range(0f, 10000f)]
+    private float money = 0f;
 
     public static MoneyManager main;
 
@@ -38,13 +38,23 @@ public class MoneyManager : MonoBehaviour
         return false;
     }
 
-    public void Topup(int amount)
+    public void Topup(float amount)
     {
         money += amount;
         UIManager.main.AddResource(amount, ResourceType.Money);
     }
 
-    public int GetBalance()
+    public void RecalculateRate()
+    {
+        UIManager.main.SetMoneyTime(
+            PlacementManager.main.GetRate(ResourceType.Money) +
+            Mathf.Abs(PowerManager.main.GetPowerDrainRate()) *
+            CitizenManager.main.GetCitizenCount() *
+            PowerManager.main.GetMoneyPerPower()
+        );
+    }
+
+    public float GetBalance()
     {
         return money;
     }

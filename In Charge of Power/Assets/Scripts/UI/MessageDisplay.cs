@@ -23,6 +23,16 @@ public class MessageDisplay : MonoBehaviour
 
     private SingleMessage staticMessage;
 
+    [SerializeField]
+    private SingleMessage messageStayPrefab;
+
+    public void SpawnMessage(Vector2 position, Sprite sprite, string message, bool stay)
+    {
+        SingleMessage newMessage = Instantiate(messageStayPrefab);
+        newMessage.transform.SetParent(container, false);
+        newMessage.Init(position, sprite, message, false, false);
+    }
+
     public void SpawnMessage(Vector2 position, Sprite sprite, string message)
     {
         SingleMessage newMessage = Instantiate(messagePrefab);
@@ -43,6 +53,14 @@ public class MessageDisplay : MonoBehaviour
         staticMessage = Instantiate(messagePrefab);
         staticMessage.transform.SetParent(container, false);
         staticMessage.Init(position, sprite, message, true, followMouse);
+    }
+
+    public void SpawnStaticMessage(Vector2 position, Sprite sprite, string message, bool followMouse, bool right)
+    {
+        ClearStaticMessage();
+        staticMessage = Instantiate(messagePrefab);
+        staticMessage.transform.SetParent(container, false);
+        staticMessage.Init(position, sprite, message, true, followMouse, right);
     }
 
     public void ClearStaticMessage()

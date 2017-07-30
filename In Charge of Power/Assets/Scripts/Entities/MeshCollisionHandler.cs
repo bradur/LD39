@@ -4,6 +4,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(MeshCollider))]
 public class MeshCollisionHandler : MonoBehaviour
@@ -55,24 +56,34 @@ public class MeshCollisionHandler : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (allow && !occupied)
+        if (allow && !occupied && !EventSystem.current.IsPointerOverGameObject() && !GameManager.main.GameIsOver)
         {
-            if (PlacementManager.main.AllowPlacement(layerType))
+            if (PlacementManager.main.IsPlacing)
             {
-                WorldItem item = PlacementManager.main.GetSelectedItem();
-                if (item != null && item.MinSize <= size)
+                if (PlacementManager.main.AllowPlacement(layerType))
                 {
-                    meshRenderer.material.color = highlightColor;
-                    CursorManager.main.SetCursor(CursorType.Pointer);
+                    WorldItem item = PlacementManager.main.GetSelectedItem();
+                    if (item != null && item.MinSize <= size)
+                    {
+                        meshRenderer.material.color = highlightColor;
+                        CursorManager.main.SetCursor(CursorType.Pointer);
 
+                    }
+                } else
+                {
+                    UIManager.main.ShowMouseMessage(string.Format("You can't place this item here!", layerType, ShopManager.main.GetItem(layerType).ItemName));
                 }
+            }
+            else
+            {
+                UIManager.main.ShowMouseMessage(string.Format("This is a {0}. You can place a {1} here.", layerType, ShopManager.main.GetItem(layerType).ItemName));
             }
         }
     }
 
     private void OnMouseUp()
     {
-        if (allow && !occupied)
+        if (allow && !occupied && !EventSystem.current.IsPointerOverGameObject() && !GameManager.main.GameIsOver)
         {
             if (PlacementManager.main.PlaceItem(PlacementManager.main.GetSelectedItem(), this))
             {
@@ -83,6 +94,7 @@ public class MeshCollisionHandler : MonoBehaviour
             {
                 // TODO unallowed placement
             }
+            UIManager.main.ClearStaticMessage();
         }
     }
 
@@ -97,6 +109,7 @@ public class MeshCollisionHandler : MonoBehaviour
         {
             meshRenderer.material.color = originalColor;
             CursorManager.main.SetCursor(CursorType.Default);
+            UIManager.main.ClearStaticMessage();
         }
     }
 }

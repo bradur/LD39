@@ -4,6 +4,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class WorldItem : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class WorldItem : MonoBehaviour
     private Color originalColor;
 
     private bool active = true;
+    public bool CanProduce { get { return active; } }
 
     private int cost = 0;
 
@@ -79,6 +81,7 @@ public class WorldItem : MonoBehaviour
         transform.localPosition = position;
         placed = true;
         boxCollider2D.enabled = true;
+        Produce();
     }
 
     private void ItemInactive()
@@ -114,6 +117,25 @@ public class WorldItem : MonoBehaviour
     [SerializeField]
     private Transform inputMessagePosition;
 
+    private bool Produce()
+    {
+        if (placed && ResourceManager.main.WithdrawResource(inputCostValue, gameItem.inputType))
+        {
+            ResourceManager.main.AddResource(outputGenerationValue, gameItem.outputType);
+            UIManager.main.ShowResourceMessage(
+                outPutMessagePosition.position,
+                outputGenerationValue,
+                gameItem.outputType
+            );
+            return true;
+        }
+        else
+        {
+            ItemInactive();
+        }
+        return false;
+    }
+
     void Update()
     {
         if (placed && active)
@@ -124,41 +146,30 @@ public class WorldItem : MonoBehaviour
             }
             else
             {
-                if (ResourceManager.main.WithdrawResource(inputCostValue, gameItem.inputType))
+                if (Produce())
                 {
-                    /*UIManager.main.ShowResourceMessage(
-                        Camera.main.WorldToScreenPoint(inputMessagePosition.position),
-                        -inputCostValue,
-                        gameItem.inputType
-                    );*/
                     outputGenerationTimer = 0f;
-                    ResourceManager.main.AddResource(outputGenerationValue, gameItem.outputType);
-                    UIManager.main.ShowResourceMessage(
-                        outPutMessagePosition.position,
-                        outputGenerationValue,
-                        gameItem.outputType
-                    );
-                }
-                else
-                {
-                    ItemInactive();
                 }
             }
         }
         else if (placed && !active)
         {
-            if (ResourceManager.main.WithdrawResource(inputCostValue, gameItem.inputType))
+            if (Produce())
             {
                 outputGenerationTimer = 0f;
-                ResourceManager.main.AddResource(outputGenerationValue, gameItem.outputType);
                 ItemActive();
             }
         }
     }
 
-    public float GetRate()
+    public float GetOutputRate()
     {
         return outputGenerationValue / outputGenerationInterval;
+    }
+
+    public float GetInputRate()
+    {
+        return -inputCostValue / outputGenerationInterval;
     }
 
     private void OnMouseDown()
@@ -168,11 +179,14 @@ public class WorldItem : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (!PlacementManager.main.IsPlacing)
+        if (!GameManager.main.GameIsOver)
         {
-            UIManager.main.ShowMouseMessage(string.Format("Sell {0} for ${1}", itemName, cost / 2));
-            CursorManager.main.SetCursor(CursorType.Pointer);
-            spriteOutline.EnableOutline();
+            if (!EventSystem.current.IsPointerOverGameObject() && !PlacementManager.main.IsPlacing)
+            {
+                UIManager.main.ShowMouseMessage(string.Format("Sell {0} for ${1}", itemName, cost / 2));
+                CursorManager.main.SetCursor(CursorType.Pointer);
+                spriteOutline.EnableOutline();
+            }
         }
     }
 
@@ -183,19 +197,22 @@ public class WorldItem : MonoBehaviour
         spriteOutline.DisableOutline();
     }
 
-    private void Kill ()
+    public void Kill()
     {
         Destroy(gameObject);
     }
 
     private void OnMouseUp()
     {
-        if (placed && !PlacementManager.main.IsPlacing)
+        if (!GameManager.main.GameIsOver)
         {
-            ResourceManager.main.AddResource(cost / 2, ResourceType.Money);
-            PlacementManager.main.RemovePlacedItem(this);
-            placementTarget.Clear();
-            Kill();
+            if (!EventSystem.current.IsPointerOverGameObject() && placed && !PlacementManager.main.IsPlacing)
+            {
+                ResourceManager.main.AddResource(cost / 2, ResourceType.Money);
+                PlacementManager.main.RemovePlacedItem(this);
+                placementTarget.Clear();
+                Kill();
+            }
         }
     }
 

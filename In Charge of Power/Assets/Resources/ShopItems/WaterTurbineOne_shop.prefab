@@ -980,7 +980,7 @@ MonoBehaviour:
   outputType: 5
   imgOutput: {fileID: 114041157407614184}
   txtOutputCount: {fileID: 114758015067236472}
-  outputCount: 10
+  outputCount: 2
   bg: {fileID: 1437846024262994}
   shopInfo: {fileID: 1393636135054608}
 --- !u!114 &114804821044009280
@@ -1340,7 +1340,7 @@ RectTransform:
   m_GameObject: {fileID: 1106770905293686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 224410359270144794}
   - {fileID: 224809348881482456}

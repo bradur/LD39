@@ -16,7 +16,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztziEOAAAIxDD4/6exSBQ50SbzqwIAgJteJUr/AwAA4M8Ab6AABw==
+   eJztw7ENAAAEADD8f7TVaJRok0YAAMBOjRflCAAAwG8Nm+AACg==
   </data>
  </layer>
  <layer name="FactoryFloor0" width="40" height="40">
@@ -24,7 +24,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzjEKAAAIxDD9/6ddnQXhhgS6twoAAH70KlH6HwAAAHcDboAABw==
+   eJztw0EKAAAEADD8/9GuPqCkrRYBAAA7arwoRwAAAH5pmjAACg==
   </data>
  </layer>
  <layer name="Copy of FactoryFloor0" width="40" height="40">
@@ -32,7 +32,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztziEOAAAIxDD4/6exWATJiTaZXxUAAMBdrxKl/wEAAL8GY0AABw==
+   eJztw7ENAAAEADD8f7TVapNok0YAAADs1XhRjgAAwD8NiVAACg==
   </data>
  </layer>
  <layer name="FactoryFloor1" width="40" height="40">
@@ -40,7 +40,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztziEOAAAIxDD4/6exOBw50SbzqwIAALj1KlH6HwAA8GsAY6AABw==
+   eJztw6ENAAAIAzDg/6Oxc1hEm7QKAADgNvGjjgAAAAuJ4AAK
   </data>
  </layer>
  <layer name="FactoryFloor2" width="40" height="40">
@@ -48,7 +48,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzrEJAAAIBDHdf2lbwQH8IoHrrwoAAODqVaL0PwAA4NcAZAAABw==
+   eJztw7ENAAAEADD8f7RVeMDQJo0AAAC4avwoRwAAgK0BinAACg==
   </data>
  </layer>
  <layer name="FactoryFloor3" width="40" height="40">
@@ -56,7 +56,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzqENADAQxLB0/6VLf4QDthSeAgAAqHdatP4HAABs+WRgAAc=
+   eJztw6ENAAAIA7DB/0djcVhEmzQBAABIev2oVgAAgMsAiwAACg==
   </data>
  </layer>
  <layer name="FactoryFloor4" width="40" height="40">
@@ -64,7 +64,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzqENAAAMw7Du/6dHd0DBgC2FJwEAgI45ffT9DwAAgJ4FbuAABw==
+   eJztw7ENAAAEADD8f7TVAQaRNmkEAADsqPGiHAEAAPitAZrAAAo=
   </data>
  </layer>
  <layer name="FactoryFloor5" width="40" height="40">
@@ -72,7 +72,23 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzjEKAAAIxDD9/6ddnQXhhgS6twoAAG56lSj9DwAAgD8Db0AABw==
+   eJztw7ENAAAEADD8f7TVbJJok0YAAMBOjRflCAAAwC8Nm1AACg==
+  </data>
+ </layer>
+ <layer name="FactoriFloor9" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw7ENAAAEADD8f7TVbpFok0YAAAAbNV6UIwAAwBcNkggACg==
+  </data>
+ </layer>
+ <layer name="FactoryFloor10" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0sENAAAEADHsP7SvEZA2uQ0uAgDgvhptlCP+8R8AAMA+DSGfABM=
   </data>
  </layer>
  <layer name="FactoryFloor7" width="40" height="40">
@@ -96,7 +112,7 @@
    <property name="Type" type="int" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzkEKACAIAMHA//+5exQoGySxA15CY8fIi8LuC/Yx9jH2MfYx9jH2MfYx9jH2MfYxnfsiMev+6b7y7y2Zvt17N/Yx9jH2MfYx9jH2MfYxv/VN4MwAvg==
+   eJzt2EEKhDAQRNGA97+zuGhwk3SqS2MZ6kM2g3aeKCjT2nwHcOxoBrLQ2bv7UKO6r7pW7Te6vpEh82Up398/+GKesi9m2sel7rvPV/bFHsq+2EfZV91vtQ/NPi77uOyrV/mm7p2PzH2qGV/v9zddaMrPyJV9XPZx2cdlH9duvtn/ab5alWvO3vHILLXs40J9J1h2Ay4=
   </data>
  </layer>
  <layer name="WaterFloor" width="40" height="40">
@@ -104,7 +120,7 @@
    <property name="Type" type="int" value="2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzsEJADAMAzGX7L9zvxnBEAnufwkAAADXvFWjWTVq/wMAIPnt0AAW
+   eJztw6EJAAAIADDF/3+2mk2CGywCAACAb3K8qEYAANholqAADQ==
   </data>
  </layer>
  <layer name="WaterFloor3" width="40" height="40">
@@ -112,7 +128,7 @@
    <property name="Type" type="int" value="2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzrEJAAAIBDHF/Xe2dYQHE7j+qgAAAPiuT4nmlCj9DwDgowXsgAAW
+   eJztw6EJAAAIADDF/3+2Go2CGywCAACA73K8qEYAANholeAADQ==
   </data>
  </layer>
  <layer name="WaterFloor4" width="40" height="40">
@@ -120,7 +136,55 @@
    <property name="Type" type="int" value="2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzsEJAEAIBDEP++/5/mIBiyQw/6kCAACA3Rul6VGa9D8AgMs+MDcAHQ==
+   eJztw7ENAAAIAyCN///s2sEDHCChCgAAAG4dP5oIAABpAZTAAA0=
+  </data>
+ </layer>
+ <layer name="WaterFloor5" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw6EJAAAIADDF/3+2Go2CGywCAAAAdnK8qEYAAH5rlAAADQ==
+  </data>
+ </layer>
+ <layer name="WaterFloor6" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw0EKAAAEADDy/z+7eoGorRYB/+R4UY0AAAAAAOxrHp8ADQ==
+  </data>
+ </layer>
+ <layer name="WaterFloor7" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw0EKAAAEADDy/z+7+oCitloE/JfjRTUCAAAAALCvAR3fAA0=
+  </data>
+ </layer>
+ <layer name="WaterFloor8" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAIAzAI/j3zTsKONukMdNrY6CIAAAAAAF0eH+8ADQ==
+  </data>
+ </layer>
+ <layer name="WaterFloor9" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw6EJAAAIADDF/3+2Go2CGywCAAAAAIDPcryoRthqNVAADQ==
+  </data>
+ </layer>
+ <layer name="WaterFloor10" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztw7EJAAAIAKCi/39u7YCGCAUjAAAAAAD4LMeLaoQtDTbQAA0=
   </data>
  </layer>
 </map>

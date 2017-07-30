@@ -10,8 +10,8 @@ public enum LayerType
 {
     None,
     Ground,
-    Water,
-    FactoryFloor
+    WaterPlatform,
+    FactoryPlatform
 }
 
 [RequireComponent(typeof(Mesh))]
@@ -140,7 +140,7 @@ public class TiledMesh : MonoBehaviour
             }
 
         }
-        if (layerType == LayerType.FactoryFloor || layerType == LayerType.Water)
+        if (layerType == LayerType.FactoryPlatform || layerType == LayerType.WaterPlatform)
         {
             //SpawnFactoryFloor(tileCountX, tileCountZ, tile.X, tile.Y);
             MeshCollisionHandler meshCollisionHandler = GetComponent<MeshCollisionHandler>();

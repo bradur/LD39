@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 224710483881959190}
   - component: {fileID: 114997570182898408}
-  - component: {fileID: 95107526116106202}
+  - component: {fileID: 95904093939001512}
   m_Layer: 5
-  m_Name: SingleMessage
+  m_Name: SingleMessageStay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &95107526116106202
+--- !u!95 &95904093939001512
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -105,9 +105,9 @@ Animator:
   m_GameObject: {fileID: 1374566708657878}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0ce4a04e6a59fa94d875e81e1f6f77af, type: 2}
+  m_Controller: {fileID: 9100000, guid: 906ccee8ab04edf4c96fead6565156b3, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -241,7 +241,7 @@ MonoBehaviour:
   txtComponent: {fileID: 114701868243472336}
   colorVariable: {r: 0, g: 0, b: 0, a: 0}
   imgComponent: {fileID: 114994215473826692}
-  animator: {fileID: 95107526116106202}
+  animator: {fileID: 0}
 --- !u!222 &222142715625711442
 CanvasRenderer:
   m_ObjectHideFlags: 1

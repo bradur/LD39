@@ -16,7 +16,7 @@ public class HUDMoney : MonoBehaviour {
     private Image imgComponent;
 
     [SerializeField]
-    private int currentMoney = 0;
+    private float currentMoney = 0;
 
 
     void Start()
@@ -25,22 +25,43 @@ public class HUDMoney : MonoBehaviour {
         SetValue(currentMoney);
     }
 
-    public void SetValue(int value)
+    public void SetValue(float value)
     {
         currentMoney = value;
-        txtComponent.text = string.Format("${0}", currentMoney);
+        txtComponent.text = string.Format("${0:#.00}", currentMoney);
     }
 
-    public void Topup(int value)
+    public void Topup(float value)
     {
         currentMoney += value;
-        txtComponent.text = string.Format("${0}", currentMoney);
+        txtComponent.text = string.Format("${0:#.00}", currentMoney);
     }
 
-    public void Withdraw(int value)
+    public void Withdraw(float value)
     {
         currentMoney -= value;
-        txtComponent.text = string.Format("${0}", currentMoney);
+        txtComponent.text = string.Format("${0:#.00}", currentMoney);
     }
 
+    [SerializeField]
+    private Text txtTimeComponent;
+
+    private float timeValue = 0;
+
+    public void AddTimeValue(float value)
+    {
+        this.timeValue += value;
+        txtTimeComponent.text = string.Format("{0:#.00}", this.timeValue);
+    }
+
+    public void SetTimeValue(float value)
+    {
+        this.timeValue = value;
+        txtTimeComponent.text = string.Format("{0:#.00}", this.timeValue);
+    }
+
+    public void ShowStaticTimeMessage()
+    {
+        UIManager.main.ShowMouseMessage(string.Format("Money per second. More citizens = more energy consumption = more money."), true);
+    }
 }

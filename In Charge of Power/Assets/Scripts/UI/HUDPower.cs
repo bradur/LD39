@@ -11,29 +11,29 @@ public class HUDPower : MonoBehaviour {
     [SerializeField]
     private Text txtComponent;
 
-    private int power = 0;
+    private float power = 0;
 
     [SerializeField]
     private Text txtTimeComponent;
 
     private float timeValue = 0;
 
-    public void AddPower (int value)
+    public void AddPower (float value)
     {
         power += value;
-        txtComponent.text = string.Format("{0}", power);
+        txtComponent.text = string.Format("{0:#.00}", power);
     }
 
-    public void SetPower(int value)
+    public void SetPower(float value)
     {
         power = value;
-        txtComponent.text = string.Format("{0}", power);
+        txtComponent.text = string.Format("{0:#.00}", power);
     }
 
-    public void DrainPower(int value)
+    public void DrainPower(float value)
     {
         power -= value;
-        txtComponent.text = string.Format("{0}", power);
+        txtComponent.text = string.Format("{0:#.00}", power);
     }
 
     public void AddTimeValue(float value)
@@ -47,4 +47,10 @@ public class HUDPower : MonoBehaviour {
         this.timeValue = value;
         txtTimeComponent.text = string.Format("{0:#.00}", this.timeValue);
     }
+
+    public void ShowStaticTimeMessage()
+    {
+        UIManager.main.ShowMouseMessage(string.Format("Power per second. Citizens consume power, power plants generate more."), false);
+    }
+
 }
