@@ -9,7 +9,7 @@ public class CameraPanManager : MonoBehaviour
 {
 
     [SerializeField]
-    [Range(0.5f, 5f)]
+    [Range(0.5f, 50f)]
     private float mouseMoveBoundary = 1f;
 
     private float screenHeight;
@@ -45,10 +45,13 @@ public class CameraPanManager : MonoBehaviour
     [SerializeField]
     private bool panningEnabled = false;
 
-
+    Vector2 multiplier;
 
     void Start()
     {
+        multiplier = MousePositionManager.main.GetMultiplier();
+        speed *= multiplier.x;
+        maxSpeed *= multiplier.x;
         screenHeight = Screen.height;
         screenWidth = Screen.width;
     }
@@ -57,21 +60,23 @@ public class CameraPanManager : MonoBehaviour
     {
         if (!GameManager.main.GameIsOver)
         {
-            if (Input.mousePosition.x > (screenWidth - mouseMoveBoundary))
+            //Vector2 mousePos = MousePositionManager.main.GetNormalizedMousePosition();
+            Vector2 mousePos = Input.mousePosition;
+            if (mousePos.x > (screenWidth - mouseMoveBoundary))
             {
-                MoveCamera(1, 0, Input.mousePosition.x - (screenWidth - mouseMoveBoundary));
+                MoveCamera(1, 0, mousePos.x - (screenWidth - mouseMoveBoundary));
             }
-            if (Input.mousePosition.x < mouseMoveBoundary)
+            if (mousePos.x < mouseMoveBoundary)
             {
-                MoveCamera(-1, 0, Mathf.Abs(Input.mousePosition.x - mouseMoveBoundary));
+                MoveCamera(-1, 0, Mathf.Abs(mousePos.x - mouseMoveBoundary));
             }
-            if (Input.mousePosition.y > (screenHeight - mouseMoveBoundary))
+            if (mousePos.y > (screenHeight - mouseMoveBoundary))
             {
-                MoveCamera(0, 1, Input.mousePosition.y - (screenHeight - mouseMoveBoundary));
+                MoveCamera(0, 1, mousePos.y - (screenHeight - mouseMoveBoundary));
             }
-            if (Input.mousePosition.y < mouseMoveBoundary)
+            if (mousePos.y < mouseMoveBoundary)
             {
-                MoveCamera(0, -1, Mathf.Abs(Input.mousePosition.y - mouseMoveBoundary));
+                MoveCamera(0, -1, Mathf.Abs(mousePos.y - mouseMoveBoundary));
             }
         }
     }

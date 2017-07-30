@@ -33,17 +33,19 @@ public class SingleMessage : MonoBehaviour
         this.followMouse = followMouse;
         rectTransform = GetComponent<RectTransform>();
 
+        Vector2 sizeDelta = MousePositionManager.main.GetNormalizedAnything(rectTransform.sizeDelta);
+
         if (this.staticMessage)
         {
             animator.enabled = false;
         }
         if (!right)
         {
-            position = new Vector2(position.x, position.y - rectTransform.sizeDelta.y / 2);
+            position = new Vector2(position.x, position.y - sizeDelta.y / 2);
         }
         if (right)
         {
-            position = new Vector2(position.x - rectTransform.sizeDelta.x, Input.mousePosition.y - rectTransform.sizeDelta.y / 2);
+            position = new Vector2(position.x - sizeDelta.x, MousePositionManager.main.GetNormalizedMousePosition().y - sizeDelta.y / 2);
         }
         if (messageText.Length > 40)
         {
@@ -59,14 +61,14 @@ public class SingleMessage : MonoBehaviour
         this.staticMessage = staticMessage;
         this.followMouse = followMouse;
         rectTransform = GetComponent<RectTransform>();
-        
+        Vector2 sizeDelta = MousePositionManager.main.GetNormalizedAnything(rectTransform.sizeDelta);
         if (this.staticMessage)
         {
             animator.enabled = false;
         }
         else
         {
-            position = new Vector2(position.x - rectTransform.sizeDelta.x / 2, position.y - rectTransform.sizeDelta.y / 2);
+            position = new Vector2(position.x - sizeDelta.x / 2, position.y - sizeDelta.y / 2);
         }
         if (messageText.Length > 40)
         {
@@ -107,15 +109,17 @@ public class SingleMessage : MonoBehaviour
 
     public void Update()
     {
+        Vector2 sizeDelta = MousePositionManager.main.GetNormalizedAnything(rectTransform.sizeDelta);
         if (staticMessage && followMouse)
         {
+            Vector2 mousePos = MousePositionManager.main.GetNormalizedMousePosition();
             if (!right)
             {
-                rectTransform.anchoredPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y - rectTransform.sizeDelta.y / 2);
+                rectTransform.anchoredPosition = new Vector2(mousePos.x, mousePos.y - sizeDelta.y / 2);
             }
             else
             {
-                rectTransform.anchoredPosition = new Vector2(Input.mousePosition.x - rectTransform.sizeDelta.x, Input.mousePosition.y - rectTransform.sizeDelta.y / 2);
+                rectTransform.anchoredPosition = new Vector2(mousePos.x - sizeDelta.x, mousePos.y - sizeDelta.y / 2);
             }
         }
     }

@@ -57,6 +57,6 @@ public class HUDToggle : MonoBehaviour
 
     public void ShowStaticMessage ()
     {
-        UIManager.main.ShowMouseMessage(string.Format(tooltipText), false);
+        UIManager.main.ShowMouseMessage(string.Format(tooltipText), true);
     }
 }

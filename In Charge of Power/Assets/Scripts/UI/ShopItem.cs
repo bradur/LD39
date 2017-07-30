@@ -139,6 +139,11 @@ public class ShopItem : MonoBehaviour
 
     public void DisableShopCapabilities()
     {
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        rectTransform.pivot = Vector2.zero;
+        rectTransform.anchorMax = Vector2.zero;
+        rectTransform.anchorMin = Vector2.zero;
+        rectTransform.localScale = Vector3.one;
         bg.SetActive(false);
         shopInfo.SetActive(false);
         GetComponent<Button>().enabled = false;

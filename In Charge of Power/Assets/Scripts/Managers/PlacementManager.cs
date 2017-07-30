@@ -91,12 +91,15 @@ public class PlacementManager : MonoBehaviour
         if (selectedItem != null)
         {
             //Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 mousePosition = Input.mousePosition;
+            Vector2 mousePosition = MousePositionManager.main.GetNormalizedMousePosition();
 
-            displayItem.transform.position = new Vector3(
-                mousePosition.x + displayItemRT.sizeDelta.x / 3,
-                mousePosition.y + displayItemRT.sizeDelta.y / 4,
-                displayItem.transform.position.z
+            Vector2 displaySize = MousePositionManager.main.GetNormalizedAnything(displayItemRT.sizeDelta);
+
+            RectTransform rectTransform = displayItem.GetComponent<RectTransform>();
+
+            rectTransform.anchoredPosition = new Vector2(
+                mousePosition.x - displaySize.x / 2,
+                mousePosition.y - displaySize.y / 2
             );
         }
     }

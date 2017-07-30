@@ -32,8 +32,8 @@ public class PowerManager : MonoBehaviour
     private float passivePowerDrainPerCitizen = 0.01f;
 
     [SerializeField]
-    [Range(1, 10)]
-    private int moneyPerPower = 1;
+    [Range(1f, 10f)]
+    private float moneyPerPower = 1.4f;
 
     [SerializeField]
     [Range(0.2f, 5f)]
@@ -68,7 +68,7 @@ public class PowerManager : MonoBehaviour
         return false;
     }
 
-    public int GetMoneyPerPower()
+    public float GetMoneyPerPower()
     {
         return moneyPerPower;
     }

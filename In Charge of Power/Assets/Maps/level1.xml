@@ -88,7 +88,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0sENAAAEADHsP7SvEZA2uQ0uAgDgvhptlCP+8R8AAMA+DSGfABM=
+   eJztw0EKAAAEADD8/9GuPqCorRYBAPBfjRflCAAAAOxrqIgACg==
   </data>
  </layer>
  <layer name="FactoryFloor7" width="40" height="40">
@@ -96,7 +96,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzjEKAAAIxLDz/592dxdEEujeBAAAAGBPja7xBwA/NXdoAA0=
+   eJztw0EKAAAEADD8/9GuXiBqq0UAAAAAn9V4UY4AAFsaaUAACg==
   </data>
  </layer>
  <layer name="FactoryFloor8" width="40" height="40">
@@ -104,7 +104,7 @@
    <property name="Type" type="int" value="3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzrEJAAAIBLF3/6XtHUAUErj+EgAAAIBdNbrGHwD813Z4AA0=
+   eJztw0EKAAAEADD8/9GuPqCkrRYBAAAAfFPjRTkCAGxoaIwACg==
   </data>
  </layer>
  <layer name="Water(pseudo)" width="40" height="40">
@@ -112,7 +112,7 @@
    <property name="Type" type="int" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2EEKhDAQRNGA97+zuGhwk3SqS2MZ6kM2g3aeKCjT2nwHcOxoBrLQ2bv7UKO6r7pW7Te6vpEh82Up398/+GKesi9m2sel7rvPV/bFHsq+2EfZV91vtQ/NPi77uOyrV/mm7p2PzH2qGV/v9zddaMrPyJV9XPZx2cdlH9duvtn/ab5alWvO3vHILLXs40J9J1h2Ay4=
+   eJztmMEKgCAQRIP+/5+jg+ChdptZtUHmgTebeWqQdBzfOYG5UQYy0Ozd/VBHdT92rOqL1hc5ZH4Zyuc70+9t/5juP/2YTKXz7TOV/Vqusl+fr+zXOpT9Wo+yH9u32g/FfjXsV8N+POhdKLpzIbms61NHNid6doTXCJTfkRv71bBfDfvVsF+N3fxG/iuZMZg1Z994JEsN+9VA/S6aigNn
   </data>
  </layer>
  <layer name="WaterFloor" width="40" height="40">
@@ -144,7 +144,7 @@
    <property name="Type" type="int" value="2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztw6EJAAAIADDF/3+2Go2CGywCAAAAdnK8qEYAAH5rlAAADQ==
+   eJztw7EJAAAIAKCi/39u7YCGCAUjAAAA+CzHi2oEAIAtDZeQAA0=
   </data>
  </layer>
  <layer name="WaterFloor6" width="40" height="40">
@@ -185,6 +185,22 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJztw7EJAAAIAKCi/39u7YCGCAUjAAAAAAD4LMeLaoQtDTbQAA0=
+  </data>
+ </layer>
+ <layer name="Copy of WaterFloor10" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAIAzAI/j3zTsKONukMQLeNjS4CAAAAAB0eB18ADQ==
+  </data>
+ </layer>
+ <layer name="Copy of Copy of WaterFloor10" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAIAzAI/j3zTsKONukMQJeNjS4CAAAAAJ0eCB8ADQ==
   </data>
  </layer>
 </map>

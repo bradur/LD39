@@ -173,7 +173,7 @@ public class CitizenManager : MonoBehaviour
         AddCitizens(newCitizens);
         UIManager.main.AddCitizens(newCitizens);
         UIManager.main.ShowNotification(string.Format(
-            "{0} new citizen{1} {2} been born into the city!",
+            "{0} new citizen{1} {2} been born in the city!",
             newCitizens == 1 ? "a" : "" + newCitizens,
             newCitizens == 1 ? "" : "s",
             newCitizens == 1 ? "has" : "have"

@@ -30,27 +30,27 @@ public class UIManager : MonoBehaviour
     private Sprite defaultMessageSprite;
 
     [SerializeField]
-    private Transform defaultNotificationPosition;
+    private RectTransform defaultNotificationPosition;
 
     public void ShowMouseMessage(string message)
     {
-        messageDisplay.SpawnStaticMessage(Input.mousePosition, defaultMessageSprite, message, true, true);
+        messageDisplay.SpawnStaticMessage(MousePositionManager.main.GetNormalizedMousePosition(), defaultMessageSprite, message, true, true);
     }
 
     public void ShowMouseMessage(string message, bool right)
     {
-        messageDisplay.SpawnStaticMessage(Input.mousePosition, defaultMessageSprite, message, true, right);
+        messageDisplay.SpawnStaticMessage(MousePositionManager.main.GetNormalizedMousePosition(), defaultMessageSprite, message, true, right);
     }
 
     public void ShowNotification(string message)
     {
-        messageDisplay.SpawnMessage(defaultNotificationPosition.position, defaultMessageSprite, message);
+        messageDisplay.SpawnMessage(defaultNotificationPosition.anchoredPosition, defaultMessageSprite, message);
     }
 
     public void ShowNotification(string message, bool stay) {
         if (stay)
         {
-            messageDisplay.SpawnMessage(defaultNotificationPosition.position, defaultMessageSprite, message, stay);
+            messageDisplay.SpawnMessage(defaultNotificationPosition.anchoredPosition, defaultMessageSprite, message, stay);
         } else
         {
             ShowNotification(message);

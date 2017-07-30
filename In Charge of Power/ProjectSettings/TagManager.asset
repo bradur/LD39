@@ -17,6 +17,7 @@ TagManager:
   - CitizenManager
   - GameManager
   - ShopManager
+  - MousePositionManager
   layers:
   - Default
   - TransparentFX
