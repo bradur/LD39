@@ -29,7 +29,7 @@ public class PowerManager : MonoBehaviour
 
     [SerializeField]
     [Range(1, 10)]
-    private int passivePowerDrain = 1;
+    private int passivePowerDrainPerCitizen = 1;
 
     [SerializeField]
     [Range(1, 10)]
@@ -59,10 +59,25 @@ public class PowerManager : MonoBehaviour
         {
             power -= amount;
             UIManager.main.WithdrawResource(amount, ResourceType.Power);
-            ResourceManager.main.AddResource(moneyPerPower, ResourceType.Money);
+            ResourceManager.main.AddResource(amount * moneyPerPower, ResourceType.Money);
             return true;
         }
         return false;
+    }
+
+    public void RecalculateRate()
+    {
+        UIManager.main.SetPowerTime(PlacementManager.main.GetRate(ResourceType.Power) + GetPowerDrainRate() * CitizenManager.main.GetCitizenCount());
+    }
+
+    public float GetPowerDrainRate()
+    {
+        return GetPowerDrainPerCitizen() / passivePowerDrainInterval;
+    }
+
+    public int GetPowerDrainPerCitizen()
+    {
+        return -passivePowerDrainPerCitizen;
     }
 
     void Update()
@@ -73,7 +88,7 @@ public class PowerManager : MonoBehaviour
         }
         else
         {
-            DrainPower(passivePowerDrain);
+            DrainPower(passivePowerDrainPerCitizen * CitizenManager.main.GetCitizenCount());
             timer = 0f;
         }
     }

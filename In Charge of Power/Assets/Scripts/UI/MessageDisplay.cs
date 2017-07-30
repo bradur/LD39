@@ -13,10 +13,15 @@ public class MessageDisplay : MonoBehaviour
     private SingleMessage messagePrefab;
 
     [SerializeField]
+    private SingleMessage worldSpaceMessagePrefab;
+
+    [SerializeField]
     private Transform container;
 
-    private SingleMessage staticMessage;
+    [SerializeField]
+    private Transform worldContainer;
 
+    private SingleMessage staticMessage;
 
     public void SpawnMessage(Vector2 position, Sprite sprite, string message)
     {
@@ -25,11 +30,10 @@ public class MessageDisplay : MonoBehaviour
         newMessage.Init(position, sprite, message, false, false);
     }
 
-
     public void SpawnMessage(Vector2 position, Sprite sprite, string message, float width)
     {
-        SingleMessage newMessage = Instantiate(messagePrefab);
-        newMessage.transform.SetParent(container, false);
+        SingleMessage newMessage = Instantiate(worldSpaceMessagePrefab);
+        newMessage.transform.SetParent(worldContainer, false);
         newMessage.Init(position, sprite, message, false, false, width);
     }
 

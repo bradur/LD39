@@ -29,9 +29,17 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Sprite defaultMessageSprite;
 
+    [SerializeField]
+    private Transform defaultNotificationPosition;
+
     public void ShowMouseMessage(string message)
     {
         messageDisplay.SpawnStaticMessage(Input.mousePosition, defaultMessageSprite, message, true);
+    }
+
+    public void ShowNotification(string message)
+    {
+        messageDisplay.SpawnMessage(defaultNotificationPosition.position, defaultMessageSprite, message);
     }
 
     public void ShowDefaultMessage(Vector2 position, string message)
@@ -48,7 +56,8 @@ public class UIManager : MonoBehaviour
         Sprite sprite = ResourceManager.main.GetResource(resourceType).sprite;
         float width = 100f;
         messageDisplay.SpawnMessage(
-            new Vector2(position.x - 50f, position.y),
+            //new Vector2(position.x - 50f, position.y),
+            position,
             sprite,
             string.Format(
                 "{0}{1}",
@@ -76,6 +85,19 @@ public class UIManager : MonoBehaviour
     public void ClearStaticMessage()
     {
         messageDisplay.ClearStaticMessage();
+    }
+
+    [SerializeField]
+    private HUDCitizens hudCitizens;
+
+    public void AddCitizens (int value)
+    {
+        hudCitizens.AddValue(value);
+    }
+
+    public void SetCitizensTime(float value)
+    {
+        hudCitizens.SetTimeValue(value);
     }
 
     [SerializeField]
@@ -134,6 +156,11 @@ public class UIManager : MonoBehaviour
     void SetPower(int amount)
     {
         hudPower.SetPower(amount);
+    }
+
+    public void SetPowerTime(float value)
+    {
+        hudPower.SetTimeValue(value);
     }
 
     public void WithdrawResource(int amount, ResourceType resourceType)

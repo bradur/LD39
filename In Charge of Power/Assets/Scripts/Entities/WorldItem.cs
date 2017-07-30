@@ -41,6 +41,7 @@ public class WorldItem : MonoBehaviour
     private int outputGenerationValue;
 
     private GameItem gameItem;
+    public GameItem GameItem { get { return gameItem; } }
 
     [SerializeField]
     private Color inactiveColor;
@@ -133,7 +134,7 @@ public class WorldItem : MonoBehaviour
                     outputGenerationTimer = 0f;
                     ResourceManager.main.AddResource(outputGenerationValue, gameItem.outputType);
                     UIManager.main.ShowResourceMessage(
-                        Camera.main.WorldToScreenPoint(outPutMessagePosition.position),
+                        outPutMessagePosition.position,
                         outputGenerationValue,
                         gameItem.outputType
                     );
@@ -153,6 +154,11 @@ public class WorldItem : MonoBehaviour
                 ItemActive();
             }
         }
+    }
+
+    public float GetRate()
+    {
+        return outputGenerationValue / outputGenerationInterval;
     }
 
     private void OnMouseDown()
@@ -187,6 +193,7 @@ public class WorldItem : MonoBehaviour
         if (placed && !PlacementManager.main.IsPlacing)
         {
             ResourceManager.main.AddResource(cost / 2, ResourceType.Money);
+            PlacementManager.main.RemovePlacedItem(this);
             placementTarget.Clear();
             Kill();
         }

@@ -28,11 +28,16 @@ public class SingleMessage : MonoBehaviour
     {
         this.staticMessage = staticMessage;
         this.followMouse = followMouse;
+        rectTransform = GetComponent<RectTransform>();
+        
         if (this.staticMessage)
         {
             animator.enabled = false;
         }
-        rectTransform = GetComponent<RectTransform>();
+        else
+        {
+            position = new Vector2(position.x - rectTransform.sizeDelta.x / 2, position.y);
+        }
         rectTransform.anchoredPosition = position;
         imgComponent.sprite = messageSprite;
         txtComponent.text = messageText;
@@ -42,11 +47,16 @@ public class SingleMessage : MonoBehaviour
     {
         this.staticMessage = staticMessage;
         this.followMouse = followMouse;
+        rectTransform = GetComponent<RectTransform>();
         if (this.staticMessage)
         {
             animator.enabled = false;
         }
-        rectTransform = GetComponent<RectTransform>();
+        else
+        {
+            //position = new Vector2(position.x - (rectTransform.sizeDelta.x / 2) * rectTransform.localScale.x, position.y);
+        }
+        
         rectTransform.anchoredPosition = position;
         rectTransform.sizeDelta = new Vector2(width, rectTransform.sizeDelta.y);
         imgComponent.sprite = messageSprite;

@@ -4,6 +4,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlacementManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlacementManager : MonoBehaviour
 
     private bool isPlacing = false;
     public bool IsPlacing { get { return isPlacing; } }
+
+    private List<WorldItem> placedItems = new List<WorldItem>();
 
     void Awake()
     {
@@ -53,10 +56,15 @@ public class PlacementManager : MonoBehaviour
         {
             return false;
         }
-        
+        if (!AllowPlacement(placementTarget.LayerType))
+        {
+            return false;
+        }
         if (item.MinSize <= placementTarget.Size)
         {
             selectedItem.Place(new Vector3(placementTarget.LowestX, placementTarget.LowestY, 0f), placementTarget);
+            placedItems.Add(selectedItem);
+            PowerManager.main.RecalculateRate();
             isPlacing = false;
             selectedItem = null;
             displayItem.Kill();
@@ -68,6 +76,12 @@ public class PlacementManager : MonoBehaviour
             SoundManager.main.PlaySound(SoundType.CantPlaceThere);
             return false;
         }
+    }
+
+    public void RemovePlacedItem(WorldItem item)
+    {
+        placedItems.Remove(item);
+        PowerManager.main.RecalculateRate();
     }
 
     void Update()
@@ -83,6 +97,19 @@ public class PlacementManager : MonoBehaviour
                 displayItem.transform.position.z
             );
         }
+    }
+
+    public float GetRate(ResourceType resourceType)
+    {
+        float rate = 0f;
+        for (int i = 0; i < placedItems.Count; i += 1)
+        {
+            if (placedItems[i].GameItem.outputType == resourceType)
+            {
+                rate += placedItems[i].GetRate();
+            }
+        }
+        return rate;
     }
 
     public WorldItem GetSelectedItem()

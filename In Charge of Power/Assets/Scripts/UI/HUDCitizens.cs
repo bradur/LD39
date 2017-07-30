@@ -6,37 +6,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class HUDPower : MonoBehaviour {
+public class HUDCitizens : MonoBehaviour {
 
     [SerializeField]
     private Text txtComponent;
 
-    private int power = 0;
-
     [SerializeField]
     private Text txtTimeComponent;
 
+    private int value = 0;
+
     private float timeValue = 0;
 
-    public void AddPower (int value)
+    public void AddValue (int value)
     {
-        power += value;
-        txtComponent.text = string.Format("{0}", power);
+        this.value += value;
+        txtComponent.text = string.Format("{0}", this.value);
     }
 
-    public void SetPower(int value)
+    public void SetValue(int value)
     {
-        power = value;
-        txtComponent.text = string.Format("{0}", power);
+        this.value = value;
+        txtComponent.text = string.Format("{0}", this.value);
     }
 
-    public void DrainPower(int value)
-    {
-        power -= value;
-        txtComponent.text = string.Format("{0}", power);
-    }
-
-    public void AddTimeValue(float value)
+    public void AddTimeValue (float value)
     {
         this.timeValue += value;
         txtTimeComponent.text = string.Format("{0:#.00}", this.timeValue);

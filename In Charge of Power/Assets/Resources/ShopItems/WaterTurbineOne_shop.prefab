@@ -980,7 +980,7 @@ MonoBehaviour:
   outputType: 5
   imgOutput: {fileID: 114041157407614184}
   txtOutputCount: {fileID: 114758015067236472}
-  outputCount: 2
+  outputCount: 10
   bg: {fileID: 1437846024262994}
   shopInfo: {fileID: 1393636135054608}
 --- !u!114 &114804821044009280

@@ -29,6 +29,7 @@ public class MeshCollisionHandler : MonoBehaviour
     public float LowestY { get { return lowestY; } }
 
     private LayerType layerType;
+    public LayerType LayerType { get { return layerType; } }
 
     private bool occupied = false;
 
