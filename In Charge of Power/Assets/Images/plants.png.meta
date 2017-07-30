@@ -1,13 +1,15 @@
 fileFormatVersion: 2
 guid: 43a6c25fe2369794ab339aebc35cd1f2
-timeCreated: 1501335401
+timeCreated: 1501401219
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: power_plant_1
-    21300002: plants_0
+    21300002: PowerPlant
     21300004: Output
     21300006: Input
+    21300008: WaterMill
+    21300010: WaterMillWheel
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -103,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: plants_0
+      name: PowerPlant
       rect:
         serializedVersion: 2
         x: 2
@@ -111,7 +113,7 @@ TextureImporter:
         width: 60
         height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -125,7 +127,7 @@ TextureImporter:
         width: 19
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,7 +141,35 @@ TextureImporter:
         width: 19
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterMill
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 194
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WaterMillWheel
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 206
+        width: 34
+        height: 34
+      alignment: 9
+      pivot: {x: 0.49948075, y: 0.49875328}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

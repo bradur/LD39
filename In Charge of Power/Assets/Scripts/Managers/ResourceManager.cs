@@ -63,6 +63,10 @@ public class ResourceManager : MonoBehaviour
 
     public void AddResource(int amount, ResourceType resourceType)
     {
+        if(resourceType == ResourceType.None)
+        {
+            return;
+        }
         if (resourceType == ResourceType.Power)
         {
             PowerManager.main.AddPower(amount);
@@ -80,6 +84,10 @@ public class ResourceManager : MonoBehaviour
 
     public bool WithdrawResource(int amount, ResourceType resourceType)
     {
+        if (resourceType == ResourceType.None)
+        {
+            return true;
+        }
         ResourceItem resourceItem = GetResource(resourceType);
         if (resourceType == ResourceType.Power)
         {

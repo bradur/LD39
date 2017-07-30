@@ -6,7 +6,7 @@ using UnityEngine;
 using System.Collections;
 using TiledSharp;
 
-enum LayerType
+public enum LayerType
 {
     None,
     Ground,
@@ -140,12 +140,12 @@ public class TiledMesh : MonoBehaviour
             }
 
         }
-        if (layerType == LayerType.FactoryFloor)
+        if (layerType == LayerType.FactoryFloor || layerType == LayerType.Water)
         {
             //SpawnFactoryFloor(tileCountX, tileCountZ, tile.X, tile.Y);
             MeshCollisionHandler meshCollisionHandler = GetComponent<MeshCollisionHandler>();
             meshCollisionHandler.name = string.Format("mch: {0}", layer.Name);
-            meshCollisionHandler.Init(numTiles, lowestX, this.height - lowestY);
+            meshCollisionHandler.Init(numTiles, lowestX, this.height - lowestY, layerType);
         }
     }
 

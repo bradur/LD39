@@ -926,6 +926,8 @@ MonoBehaviour:
   itemName: Coal Processing Plant
   itemType: 10
   inputType: 6
+  requiredLayer: 3
+  imgItem: {fileID: 114001464750205338}
   txtName: {fileID: 114368422663002708}
   txtCost: {fileID: 114867127216156320}
   txtInputCount: {fileID: 114470590241489468}

@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114234548943806894}
   - component: {fileID: 114107959379949360}
   m_Layer: 5
-  m_Name: CoalPlantOne_shop
+  m_Name: WaterTurbineOne_shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -922,21 +922,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79f7421a73f4864494dc4141694d7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 200
-  itemName: Coal Plant
-  itemType: 1
-  inputType: 1
-  requiredLayer: 3
+  cost: 50
+  itemName: Water Turbine
+  itemType: 5
+  inputType: 0
+  requiredLayer: 2
   imgItem: {fileID: 114001464750205338}
   txtName: {fileID: 114368422663002708}
   txtCost: {fileID: 114867127216156320}
   txtInputCount: {fileID: 114470590241489468}
   imgInput: {fileID: 114804821044009280}
-  inputCount: 2
+  inputCount: 0
   outputType: 5
   imgOutput: {fileID: 114041157407614184}
   txtOutputCount: {fileID: 114758015067236472}
-  outputCount: 4
+  outputCount: 2
 --- !u!114 &114804821044009280
 MonoBehaviour:
   m_ObjectHideFlags: 1

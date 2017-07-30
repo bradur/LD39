@@ -28,6 +28,7 @@ public class MeshCollisionHandler : MonoBehaviour
 
     public float LowestY { get { return lowestY; } }
 
+    private LayerType layerType;
 
     void Start()
     {
@@ -38,11 +39,12 @@ public class MeshCollisionHandler : MonoBehaviour
 
     }
 
-    public void Init(int size, float lowestX, float lowestY)
+    public void Init(int size, float lowestX, float lowestY, LayerType layerType)
     {
         this.size = size;
         this.lowestX = lowestX;
         this.lowestY = lowestY;
+        this.layerType = layerType;
         meshRenderer = GetComponent<MeshRenderer>();
         originalColor = meshRenderer.material.color;
         allow = true;
@@ -52,11 +54,15 @@ public class MeshCollisionHandler : MonoBehaviour
     {
         if (allow)
         {
-            WorldItem item = PlacementManager.main.GetSelectedItem();
-            if (item != null && item.MinSize <= size)
+            if (PlacementManager.main.AllowPlacement(layerType))
             {
-                meshRenderer.material.color = highlightColor;
-                CursorManager.main.SetCursor(CursorType.Pointer);
+                WorldItem item = PlacementManager.main.GetSelectedItem();
+                if (item != null && item.MinSize <= size)
+                {
+                    meshRenderer.material.color = highlightColor;
+                    CursorManager.main.SetCursor(CursorType.Pointer);
+
+                }
             }
         }
     }
@@ -68,7 +74,8 @@ public class MeshCollisionHandler : MonoBehaviour
             if (PlacementManager.main.PlaceItem(PlacementManager.main.GetSelectedItem(), this))
             {
                 meshRenderer.material.color = originalColor;
-            } else
+            }
+            else
             {
                 // TODO unallowed placement
             }

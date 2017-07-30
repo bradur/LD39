@@ -47,7 +47,7 @@
             [ ] Level 3
             [ ] Level 4
         [ ] Wind
-        [ ] Water
+        [x] Water
         [ ] Nuclear
             [ ] Level 1
             [ ] Level 2

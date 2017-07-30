@@ -27,6 +27,14 @@ public class ShopItem : MonoBehaviour
     private ResourceType inputType;
 
     [SerializeField]
+    private LayerType requiredLayer;
+
+    public LayerType RequiredLayer { get { return requiredLayer; } }
+
+    [SerializeField]
+    private Image imgItem;
+
+    [SerializeField]
     private Text txtName;
 
     [SerializeField]
@@ -58,11 +66,14 @@ public class ShopItem : MonoBehaviour
         correspondingKey = key;
     }
 
-    void Start()
+    public void Init()
     {
-        txtInputCount.text = "" + inputCount;
         imgInput.sprite = ItemManager.main.GetInputResource(itemType).sprite;
         imgOutput.sprite = ItemManager.main.GetOutputResource(itemType).sprite;
+        imgItem.sprite = ItemManager.main.GetItem(itemType).sprite;
+        if (inputType != ResourceType.None) {
+            txtInputCount.text = "" + inputCount;
+        }
         txtOutputCount.text = "" + outputCount;
         txtCost.text = string.Format("$ {0}", cost);
         txtName.text = itemName;

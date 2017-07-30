@@ -953,8 +953,8 @@ GameObject:
   m_Component:
   - component: {fileID: 680115703}
   - component: {fileID: 680115705}
-  - component: {fileID: 680115704}
   - component: {fileID: 680115706}
+  - component: {fileID: 680115704}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -1032,6 +1032,7 @@ MonoBehaviour:
   shopItems:
   - {fileID: 114791116379031840, guid: 6065b40ee571fa546a52c10a142d63aa, type: 2}
   - {fileID: 114791116379031840, guid: bca291ef47801f14c9a8970fe77c5b46, type: 2}
+  - {fileID: 114791116379031840, guid: 0305370b80bd6a2489a35db59eedb974, type: 2}
   container: {fileID: 680115703}
 --- !u!1 &714744506
 GameObject:
@@ -1495,11 +1496,11 @@ MonoBehaviour:
     outputType: 1
     sprite: {fileID: 21300002, guid: 43a6c25fe2369794ab339aebc35cd1f2, type: 3}
     prefab: {fileID: 114544704917724756, guid: 912612f4a39081e4db42965c25322b35, type: 2}
-  - itemType: 0
+  - itemType: 5
     inputType: 0
-    outputType: 0
-    sprite: {fileID: 0}
-    prefab: {fileID: 0}
+    outputType: 5
+    sprite: {fileID: 21300008, guid: 43a6c25fe2369794ab339aebc35cd1f2, type: 3}
+    prefab: {fileID: 114544704917724756, guid: 6a9185effacbd2240b5289462a69b9fa, type: 2}
   - itemType: 0
     inputType: 0
     outputType: 0

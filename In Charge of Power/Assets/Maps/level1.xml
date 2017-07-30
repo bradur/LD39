@@ -59,12 +59,28 @@
    eJztzrENAAAMwjD6/9NdOYHBlrInAQBg1VWL/AEAALDqAZ0wAAo=
   </data>
  </layer>
- <layer name="Water" width="40" height="40">
+ <layer name="Water(pseudo)" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzkEKACAIAEHB//+5e0QYCyWxA15EYSPq8uD2BfsY+xj7GPsY+xj7GPsY+xj7GPuYzn1ZmPl+939bpW+178Y+xj7GPsY+xj7GPsY+5re+AQCAAKk=
+  </data>
+ </layer>
+ <layer name="WaterFloor" width="40" height="40">
   <properties>
    <property name="Type" type="int" value="2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0UEKwCAQBEHB//855AeGEpTQBXPbQ8OOsW5+uD2hPlOfqc/UZ+oz9Zn6TH2mPlOfublvbt4JKy03/+BVn6nP1GfqM/WZ+kx95m99DyGLAMQ=
+   eJztzsEJADAMAzGX7L9zvxnBEAnufwkAAADXvFWjWTVq/wMAIPnt0AAW
+  </data>
+ </layer>
+ <layer name="WaterFloor3" width="40" height="40">
+  <properties>
+   <property name="Type" type="int" value="2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzrEJAAAIBDHF/Xe2dYQHE7j+qgAAAPiuT4nmlCj9DwDgowXsgAAW
   </data>
  </layer>
 </map>

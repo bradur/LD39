@@ -37,6 +37,11 @@ public class PlacementManager : MonoBehaviour
 
     }
 
+    public bool AllowPlacement(LayerType layerType)
+    {
+        return (displayItem != null && displayItem.RequiredLayer == layerType);
+    }
+
     public bool PlaceItem(WorldItem item, MeshCollisionHandler placementTarget)
     {
         if (item == null)

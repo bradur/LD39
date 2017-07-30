@@ -36,6 +36,7 @@ public class ShopManager : MonoBehaviour {
         for (int i = 0; i < shopItems.Count; i += 1)
         {
             ShopItem shopItem = Instantiate(shopItems[i]);
+            shopItem.Init();
             RectTransform rectTransform = shopItem.GetComponent<RectTransform>();
             rectTransform.SetParent(container, false);
             rectTransform.anchoredPosition = new Vector2(
