@@ -11,6 +11,7 @@ public class PlacementManager : MonoBehaviour
     public static PlacementManager main;
 
     private WorldItem selectedItem;
+    private ShopItem displayItem;
 
     void Awake()
     {
@@ -28,6 +29,9 @@ public class PlacementManager : MonoBehaviour
     [SerializeField]
     private Transform placementContainer;
 
+    [SerializeField]
+    private Transform displayContainer;
+
     void Start()
     {
 
@@ -43,6 +47,8 @@ public class PlacementManager : MonoBehaviour
         {
             selectedItem.Place(new Vector3(placementTarget.LowestX, placementTarget.LowestY, 0f));
             selectedItem = null;
+            displayItem.Kill();
+            displayItem = null;
             return true;
         }
         else
@@ -56,11 +62,13 @@ public class PlacementManager : MonoBehaviour
     {
         if (selectedItem != null)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            selectedItem.transform.position = new Vector3(
+            //Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePosition = Input.mousePosition;
+
+            displayItem.transform.position = new Vector3(
                 mousePosition.x,
                 mousePosition.y,
-                selectedItem.transform.position.z
+                displayItem.transform.position.z
             );
         }
     }
@@ -70,11 +78,16 @@ public class PlacementManager : MonoBehaviour
         return selectedItem;
     }
 
-    public void SelectItem(GameItem item, int inputCount, int outputCount)
+    public void SelectItem(ShopItem shopItem, int inputCount, int outputCount)
     {
+        GameItem item = ItemManager.main.GetItem(shopItem.ItemType);
         // TODO CHECK FOR CURRENTLY SELECTED ITEM
         selectedItem = Instantiate(item.prefab);
         selectedItem.transform.SetParent(placementContainer, false);
         selectedItem.Init(item, inputCount, outputCount);
+
+        displayItem = Instantiate(shopItem);
+        displayItem.DisableShopCapabilities();
+        displayItem.transform.SetParent(displayContainer, false);
     }
 }

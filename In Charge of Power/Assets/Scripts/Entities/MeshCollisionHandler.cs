@@ -56,6 +56,7 @@ public class MeshCollisionHandler : MonoBehaviour
             if (item != null && item.MinSize <= size)
             {
                 meshRenderer.material.color = highlightColor;
+                CursorManager.main.SetCursor(CursorType.Pointer);
             }
         }
     }
@@ -79,6 +80,7 @@ public class MeshCollisionHandler : MonoBehaviour
         if (allow)
         {
             meshRenderer.material.color = originalColor;
+            CursorManager.main.SetCursor(CursorType.Default);
         }
     }
 }

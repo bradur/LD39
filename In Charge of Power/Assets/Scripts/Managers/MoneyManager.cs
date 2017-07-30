@@ -35,7 +35,6 @@ public class MoneyManager : MonoBehaviour
             UIManager.main.WithdrawResource(amount, ResourceType.Money);
             return true;
         }
-        DebugLogger.Log(string.Format("Not enough money! ({0} - {1} = {2})", money, amount, money - amount));
         return false;
     }
 

@@ -85,9 +85,12 @@ public class ResourceManager : MonoBehaviour
         {
             return PowerManager.main.DrainPower(amount);
         }
+        else if (resourceType == ResourceType.Money)
+        {
+            return MoneyManager.main.Withdraw(amount);
+        }
         else if ((resourceItem.amount - amount) > 0)
         {
-            DebugLogger.Log("" + resourceItem.amount);
             resourceItem.amount -= amount;
             UIManager.main.WithdrawResource(amount, resourceType);
             return true;

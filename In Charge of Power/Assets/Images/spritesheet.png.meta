@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3cbe0b7acdb4c3e458f3a6798abe095f
-timeCreated: 1501361053
+timeCreated: 1501393522
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,6 +13,7 @@ TextureImporter:
     21300012: Power
     21300014: Coal
     21300016: Nuclear
+    21300018: DollaryDoo
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -182,6 +183,20 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DollaryDoo
+      rect:
+        serializedVersion: 2
+        x: 96
         y: 0
         width: 32
         height: 32

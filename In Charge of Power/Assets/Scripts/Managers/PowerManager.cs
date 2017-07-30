@@ -32,6 +32,10 @@ public class PowerManager : MonoBehaviour
     private int passivePowerDrain = 1;
 
     [SerializeField]
+    [Range(1, 10)]
+    private int moneyPerPower = 1;
+
+    [SerializeField]
     [Range(0.2f, 5f)]
     private float passivePowerDrainInterval = 0.2f;
 
@@ -55,6 +59,7 @@ public class PowerManager : MonoBehaviour
         {
             power -= amount;
             UIManager.main.WithdrawResource(amount, ResourceType.Power);
+            ResourceManager.main.AddResource(moneyPerPower, ResourceType.Money);
             return true;
         }
         return false;

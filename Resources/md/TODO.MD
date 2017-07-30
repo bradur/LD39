@@ -26,7 +26,7 @@
         [ ] Click on component to view details / settings
             [ ] Highlight (Sprite outline shader?)
             [ ] (Move to stash)
-        [ ] Always show component input / output
+        [x] Always show component input / output
         [ ] Animated component
 
 [ ] Art
@@ -54,9 +54,9 @@
 
     [ ] Resource icons
         [x] Power
-        [ ] Money
+        [x] Money
         [x] Coal
-        [ ] Nuclear
+        [x] Nuclear
         [ ] Water
         [ ] Wind
 

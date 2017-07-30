@@ -17,7 +17,11 @@ public enum ItemType
     WaterTurbineTwo,
     WindMillOne,
     WindMillTwo,
-    NuclearPlant
+    NuclearPlant,
+    CoalProcessingPlantOne,
+    CoalProcessingPlantTwo,
+    CoalProcessingPlantThree,
+    CoalProcessingPlantFour,
 }
 
 public class ItemManager : MonoBehaviour

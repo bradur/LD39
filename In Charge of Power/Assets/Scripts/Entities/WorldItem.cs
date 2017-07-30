@@ -42,9 +42,16 @@ public class WorldItem : MonoBehaviour
 
     private GameItem gameItem;
 
+    [SerializeField]
+    private Color inactiveColor;
+
+    private Color originalColor;
+
+    private bool active = true;
 
     public void Init(GameItem item, int inputCount, int outputCount)
     {
+        originalColor = Color.white;
         gameItem = item;
         spriteRenderer.sprite = gameItem.sprite;
         spriteRendererInputIcon.sprite = ResourceManager.main.GetResource(gameItem.inputType).sprite;
@@ -58,9 +65,26 @@ public class WorldItem : MonoBehaviour
 
     public void Place(Vector3 position)
     {
+        gameObject.SetActive(true);
         transform.localPosition = position;
         placed = true;
         boxCollider2D.enabled = true;
+    }
+
+    private void ItemInactive()
+    {
+        spriteRenderer.color = inactiveColor;
+        spriteRendererInputIcon.color = inactiveColor;
+        spriteRendererOutputIcon.color = inactiveColor;
+        active = false;
+    }
+
+    private void ItemActive()
+    {
+        spriteRenderer.color = originalColor;
+        spriteRendererInputIcon.color = originalColor;
+        spriteRendererOutputIcon.color = originalColor;
+        active = true;
     }
 
     void Start()
@@ -76,7 +100,7 @@ public class WorldItem : MonoBehaviour
 
     void Update()
     {
-        if (placed)
+        if (placed && active)
         {
             if (outputGenerationTimer < outputGenerationInterval)
             {
@@ -91,8 +115,17 @@ public class WorldItem : MonoBehaviour
                 }
                 else
                 {
-                    // TODO BLINK
+                    ItemInactive();
                 }
+            }
+        }
+        else if (placed && !active)
+        {
+            if (ResourceManager.main.WithdrawResource(inputCostValue, gameItem.inputType))
+            {
+                outputGenerationTimer = 0f;
+                ResourceManager.main.AddResource(outputGenerationValue, gameItem.outputType);
+                ItemActive();
             }
         }
     }

@@ -5,6 +5,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ShopItem : MonoBehaviour
 {
@@ -17,12 +18,19 @@ public class ShopItem : MonoBehaviour
 
     [SerializeField]
     private ItemType itemType = ItemType.None;
+    public ItemType ItemType { get { return itemType; } }
 
     //[SerializeField]
     private KeyCode correspondingKey;
 
     [SerializeField]
     private ResourceType inputType;
+
+    [SerializeField]
+    private Text txtName;
+
+    [SerializeField]
+    private Text txtCost;
 
     [SerializeField]
     private Text txtInputCount;
@@ -56,6 +64,8 @@ public class ShopItem : MonoBehaviour
         imgInput.sprite = ItemManager.main.GetInputResource(itemType).sprite;
         imgOutput.sprite = ItemManager.main.GetOutputResource(itemType).sprite;
         txtOutputCount.text = "" + outputCount;
+        txtCost.text = string.Format("$ {0}", cost);
+        txtName.text = itemName;
     }
 
     public void HoverIn ()
@@ -68,6 +78,12 @@ public class ShopItem : MonoBehaviour
         CursorManager.main.SetCursor(CursorType.Default);
     }
 
+    public void DisableShopCapabilities()
+    {
+        GetComponent<Button>().enabled = false;
+        GetComponent<EventTrigger>().enabled = false;
+    }
+
     public void Kill()
     {
         // TODO animate?
@@ -78,7 +94,7 @@ public class ShopItem : MonoBehaviour
     {
         if (MoneyManager.main.Withdraw(cost))
         {
-            PlacementManager.main.SelectItem(ItemManager.main.GetItem(itemType), inputCount, outputCount);
+            PlacementManager.main.SelectItem(this, inputCount, outputCount);
             DebugLogger.Log(string.Format("You bought a \"{0}\" with {1} dollarydoos.", itemName, cost));
             //Kill();
         }

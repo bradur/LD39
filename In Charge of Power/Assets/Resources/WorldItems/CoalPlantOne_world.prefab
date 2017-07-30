@@ -188,12 +188,12 @@ GameObject:
   - component: {fileID: 114928599466355538}
   - component: {fileID: 61917111192572014}
   m_Layer: 0
-  m_Name: power_plant_1
+  m_Name: CoalPlantOne_world
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4033612791636400
 Transform:
   m_ObjectHideFlags: 1
@@ -235,8 +235,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500918190122400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17499983, y: -0.2640999, z: 0}
-  m_LocalScale: {x: 0.23209, y: 0.23209, z: 0.23209}
+  m_LocalPosition: {x: 0.1057, y: -0.2905, z: 0}
+  m_LocalScale: {x: 0.35970017, y: 0.18340039, z: 0.23209}
   m_Children: []
   m_Father: {fileID: 4136469617766222}
   m_RootOrder: 2
@@ -261,7 +261,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1165019625795168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.110899806, y: -0.155, z: 0}
+  m_LocalPosition: {x: 0.097, y: -0.178, z: 0}
   m_LocalScale: {x: 0.04, y: 0.04, z: 1}
   m_Children: []
   m_Father: {fileID: 4136469617766222}
@@ -274,8 +274,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1629865791646762}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17499983, y: -0.2640999, z: 0}
-  m_LocalScale: {x: 0.25209, y: 0.25209, z: 0.23209}
+  m_LocalPosition: {x: 0.1057, y: -0.2839, z: 0}
+  m_LocalScale: {x: 0.3906968, y: 0.21242635, z: 0.23209}
   m_Children: []
   m_Father: {fileID: 4136469617766222}
   m_RootOrder: 3
@@ -302,7 +302,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1218310393596594}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.11089997, y: -0.1599002, z: 0}
+  m_LocalPosition: {x: 0.097, y: -0.178, z: 0}
   m_LocalScale: {x: 0.04, y: 0.04, z: 1}
   m_Children: []
   m_Father: {fileID: 4033612791636400}
@@ -315,8 +315,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1478961924950046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.175, y: -0.269, z: 0}
-  m_LocalScale: {x: 0.23208831, y: 0.23208831, z: 0.23208831}
+  m_LocalPosition: {x: 0.092, y: -0.2932, z: 0}
+  m_LocalScale: {x: 0.38491386, y: 0.18745756, z: 0.23208831}
   m_Children: []
   m_Father: {fileID: 4033612791636400}
   m_RootOrder: 2
@@ -328,8 +328,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1801229527947912}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17499995, y: -0.26900008, z: 0}
-  m_LocalScale: {x: 0.25209, y: 0.25209, z: 0.23209}
+  m_LocalPosition: {x: 0.092, y: -0.2932, z: 0}
+  m_LocalScale: {x: 0.4180863, y: 0.20361291, z: 0.23209}
   m_Children: []
   m_Father: {fileID: 4033612791636400}
   m_RootOrder: 3
@@ -447,8 +447,8 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 1
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 60
   m_FontStyle: 0
@@ -468,8 +468,8 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 1
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 60
   m_FontStyle: 0
