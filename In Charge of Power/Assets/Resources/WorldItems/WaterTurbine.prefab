@@ -250,7 +250,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1514561719534548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.37, y: 0.55, z: 0}
+  m_LocalPosition: {x: 1.37, y: 0.445, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4210285146476360}
@@ -600,7 +600,9 @@ MonoBehaviour:
   textMeshOutputCount: {fileID: 102743286308159638}
   minSize: 6
   inactiveColor: {r: 0.972549, g: 0.7882353, b: 0.7882353, a: 1}
-  outputGenerationInterval: 1
+  outputGenerationInterval: 5
+  outPutMessagePosition: {fileID: 4523440879875626}
+  inputMessagePosition: {fileID: 4033612791636400}
 --- !u!114 &114966660914556032
 MonoBehaviour:
   m_ObjectHideFlags: 1

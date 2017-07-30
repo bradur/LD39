@@ -510,7 +510,9 @@ MonoBehaviour:
   textMeshOutputCount: {fileID: 102743286308159638}
   minSize: 6
   inactiveColor: {r: 0.972549, g: 0.7882353, b: 0.7882353, a: 1}
-  outputGenerationInterval: 1
+  outputGenerationInterval: 5
+  outPutMessagePosition: {fileID: 4523440879875626}
+  inputMessagePosition: {fileID: 4033612791636400}
 --- !u!114 &114928599466355538
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -40,6 +40,16 @@ public class CursorManager : MonoBehaviour {
         }
     }
 
+    public void SetCursorPointer()
+    {
+        SetCursor(CursorType.Pointer);
+    }
+
+    public void SetCursorDefault()
+    {
+        SetCursor(CursorType.Default);
+    }
+
     public void SetCursor (CursorType cursor)
     {
         if (cursor == CursorType.Default)

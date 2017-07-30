@@ -17,7 +17,7 @@ public class ShopManager : MonoBehaviour {
     private Image imgComponent;
 
     [SerializeField]
-    [Range(0f, 3f)]
+    [Range(0f, 50f)]
     private float marginVertical;
 
     [SerializeField]

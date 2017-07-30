@@ -30,6 +30,8 @@ public class MeshCollisionHandler : MonoBehaviour
 
     private LayerType layerType;
 
+    private bool occupied = false;
+
     void Start()
     {
     }
@@ -52,7 +54,7 @@ public class MeshCollisionHandler : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (allow)
+        if (allow && !occupied)
         {
             if (PlacementManager.main.AllowPlacement(layerType))
             {
@@ -69,17 +71,23 @@ public class MeshCollisionHandler : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (allow)
+        if (allow && !occupied)
         {
             if (PlacementManager.main.PlaceItem(PlacementManager.main.GetSelectedItem(), this))
             {
                 meshRenderer.material.color = originalColor;
+                occupied = true;
             }
             else
             {
                 // TODO unallowed placement
             }
         }
+    }
+
+    public void Clear()
+    {
+        occupied = false;
     }
 
     private void OnMouseExit()

@@ -24,6 +24,77 @@ public class UIManager : MonoBehaviour
     }
 
     [SerializeField]
+    private MessageDisplay messageDisplay;
+
+    [SerializeField]
+    private Sprite defaultMessageSprite;
+
+    public void ShowMouseMessage(string message)
+    {
+        messageDisplay.SpawnStaticMessage(Input.mousePosition, defaultMessageSprite, message, true);
+    }
+
+    public void ShowDefaultMessage(Vector2 position, string message)
+    {
+        messageDisplay.SpawnStaticMessage(position, defaultMessageSprite, message, false);
+    }
+
+    public void ShowResourceMessage(Vector2 position, int amount, ResourceType resourceType)
+    {
+        if(resourceType == ResourceType.None)
+        {
+            return;
+        }
+        Sprite sprite = ResourceManager.main.GetResource(resourceType).sprite;
+        float width = 100f;
+        messageDisplay.SpawnMessage(
+            new Vector2(position.x - 50f, position.y),
+            sprite,
+            string.Format(
+                "{0}{1}",
+                amount > 0 ? "+" : "",
+                amount
+            ),
+            width
+        );
+    }
+
+    public void ShowMoneyMessage(Vector2 position, int amount)
+    {
+        Sprite moneySprite = ResourceManager.main.GetResource(ResourceType.Money).sprite;
+        messageDisplay.SpawnMessage(
+            position,
+            moneySprite,
+            string.Format(
+                "{0}{1}",
+                amount > 0 ? "+" : "",
+                amount
+            )
+        );
+    }
+
+    public void ClearStaticMessage()
+    {
+        messageDisplay.ClearStaticMessage();
+    }
+
+    [SerializeField]
+    private HUDToggle hudMusic;
+
+    [SerializeField]
+    private HUDToggle hudSfx;
+
+    public void ToggleMusic()
+    {
+        hudMusic.Toggle();
+    }
+
+    public void ToggleSfx()
+    {
+        hudSfx.Toggle();
+    }
+
+    [SerializeField]
     private HUDResource hudCoal;
     [SerializeField]
     private HUDResource hudNuclear;

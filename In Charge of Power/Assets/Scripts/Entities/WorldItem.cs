@@ -49,10 +49,18 @@ public class WorldItem : MonoBehaviour
 
     private bool active = true;
 
-    public void Init(GameItem item, int inputCount, int outputCount)
+    private int cost = 0;
+
+    private string itemName = "";
+
+    private MeshCollisionHandler placementTarget;
+
+    public void Init(GameItem item, int inputCount, int outputCount, int cost, string itemName)
     {
         originalColor = Color.white;
         gameItem = item;
+        this.cost = cost;
+        this.itemName = itemName;
         spriteRenderer.sprite = gameItem.sprite;
         spriteRendererInputIcon.sprite = ResourceManager.main.GetResource(gameItem.inputType).sprite;
         spriteRendererOutputIcon.sprite = ResourceManager.main.GetResource(gameItem.outputType).sprite;
@@ -63,8 +71,9 @@ public class WorldItem : MonoBehaviour
         boxCollider2D.enabled = false;
     }
 
-    public void Place(Vector3 position)
+    public void Place(Vector3 position, MeshCollisionHandler placementTarget)
     {
+        this.placementTarget = placementTarget;
         gameObject.SetActive(true);
         transform.localPosition = position;
         placed = true;
@@ -98,6 +107,12 @@ public class WorldItem : MonoBehaviour
 
     private float outputGenerationTimer = 0f;
 
+    [SerializeField]
+    private Transform outPutMessagePosition;
+
+    [SerializeField]
+    private Transform inputMessagePosition;
+
     void Update()
     {
         if (placed && active)
@@ -110,8 +125,18 @@ public class WorldItem : MonoBehaviour
             {
                 if (ResourceManager.main.WithdrawResource(inputCostValue, gameItem.inputType))
                 {
+                    /*UIManager.main.ShowResourceMessage(
+                        Camera.main.WorldToScreenPoint(inputMessagePosition.position),
+                        -inputCostValue,
+                        gameItem.inputType
+                    );*/
                     outputGenerationTimer = 0f;
                     ResourceManager.main.AddResource(outputGenerationValue, gameItem.outputType);
+                    UIManager.main.ShowResourceMessage(
+                        Camera.main.WorldToScreenPoint(outPutMessagePosition.position),
+                        outputGenerationValue,
+                        gameItem.outputType
+                    );
                 }
                 else
                 {
@@ -137,19 +162,34 @@ public class WorldItem : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        CursorManager.main.SetCursor(CursorType.Pointer);
-        spriteOutline.EnableOutline();
+        if (!PlacementManager.main.IsPlacing)
+        {
+            UIManager.main.ShowMouseMessage(string.Format("Sell {0} for ${1}", itemName, cost / 2));
+            CursorManager.main.SetCursor(CursorType.Pointer);
+            spriteOutline.EnableOutline();
+        }
     }
 
     private void OnMouseExit()
     {
         CursorManager.main.SetCursor(CursorType.Default);
+        UIManager.main.ClearStaticMessage();
         spriteOutline.DisableOutline();
+    }
+
+    private void Kill ()
+    {
+        Destroy(gameObject);
     }
 
     private void OnMouseUp()
     {
-
+        if (placed && !PlacementManager.main.IsPlacing)
+        {
+            ResourceManager.main.AddResource(cost / 2, ResourceType.Money);
+            placementTarget.Clear();
+            Kill();
+        }
     }
 
 

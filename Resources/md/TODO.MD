@@ -20,7 +20,7 @@
         [ ] Buy a component
             [x] Check money, if enough allow buy
             [ ] Money back if cancel
-        [ ] Once placed, sell for half
+        [x] Once placed, sell for half
 
     [ ] "Board"
         [ ] Click on component to view details / settings
@@ -32,7 +32,7 @@
 [ ] Art
     [ ] Cursor
         [~] Default
-        [~] Pointer
+        [x] Pointer
     [ ] Textures
         [ ] UI background
         [ ] UI borders
@@ -69,4 +69,4 @@
     [ ] Beep sound for when running out of power
 
 [ ] Music
-    [~] Main theme
+    [x] Main theme

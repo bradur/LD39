@@ -12,9 +12,11 @@ public class ShopItem : MonoBehaviour
 
     [SerializeField]
     private int cost = 0;
+    public int Cost { get { return cost; } }
 
     [SerializeField]
     private string itemName = "item";
+    public string ItemName { get { return itemName; } }
 
     [SerializeField]
     private ItemType itemType = ItemType.None;
@@ -61,6 +63,12 @@ public class ShopItem : MonoBehaviour
     [SerializeField]
     private int outputCount;
 
+    [SerializeField]
+    private GameObject bg;
+
+    [SerializeField]
+    private GameObject shopInfo;
+
     public void SetKeyCode(KeyCode key)
     {
         correspondingKey = key;
@@ -71,26 +79,58 @@ public class ShopItem : MonoBehaviour
         imgInput.sprite = ItemManager.main.GetInputResource(itemType).sprite;
         imgOutput.sprite = ItemManager.main.GetOutputResource(itemType).sprite;
         imgItem.sprite = ItemManager.main.GetItem(itemType).sprite;
-        if (inputType != ResourceType.None) {
+        if (inputType != ResourceType.None)
+        {
             txtInputCount.text = "" + inputCount;
+        }
+        else
+        {
+            imgInput.enabled = false;
         }
         txtOutputCount.text = "" + outputCount;
         txtCost.text = string.Format("$ {0}", cost);
         txtName.text = itemName;
     }
 
-    public void HoverIn ()
+    public void HoverIn()
     {
-        CursorManager.main.SetCursor(CursorType.Pointer);
+        if (MoneyManager.main.GetBalance() >= cost)
+        {
+            CursorManager.main.SetCursor(CursorType.Pointer);
+            UIManager.main.ShowMouseMessage(string.Format(
+                "Buy {0} for ${1}", itemName, cost
+            ));
+        }
+        else
+        {
+            UIManager.main.ShowMouseMessage(string.Format(
+                "Not enough money (${0})", cost
+            ));
+        }
     }
 
-    public void HoverOut ()
+    public void HoverOut()
     {
         CursorManager.main.SetCursor(CursorType.Default);
+        UIManager.main.ClearStaticMessage();
     }
+
+    private void OnMouseEnter()
+    {
+        HoverIn();
+    }
+
+    private void OnMouseExit()
+    {
+        HoverOut();
+    }
+
+
 
     public void DisableShopCapabilities()
     {
+        bg.SetActive(false);
+        shopInfo.SetActive(false);
         GetComponent<Button>().enabled = false;
         GetComponent<EventTrigger>().enabled = false;
     }

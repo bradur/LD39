@@ -21,16 +21,31 @@ public class SoundManager : MonoBehaviour {
     [SerializeField]
     private List<GameSound> sounds = new List<GameSound>();
 
-    private bool isOn = true;
+    private bool sfxMuted = false;
+
+    [SerializeField]
+    private bool musicMuted = false;
+
+    [SerializeField]
+    private AudioSource musicSource;
 
     void Awake()
     {
         main = this;
     }
 
+    private void Start()
+    {
+        if (musicMuted)
+        {
+            musicSource.Pause();
+            UIManager.main.ToggleMusic();
+        }
+    }
+
     public void PlaySound(SoundType soundType)
     {
-        if (isOn)
+        if (!sfxMuted)
         {
             foreach (GameSound gameSound in sounds)
             {
@@ -42,10 +57,24 @@ public class SoundManager : MonoBehaviour {
         }
     }
 
-    public bool Toggle()
+    public void ToggleSfx()
     {
-        isOn = !isOn;
-        return isOn;
+        sfxMuted = !sfxMuted;
+        UIManager.main.ToggleSfx();
+    }
+
+    public void ToggleMusic()
+    {
+        musicMuted = !musicMuted;
+        if (musicMuted)
+        {
+            musicSource.Pause();
+        }
+        else
+        {
+            musicSource.Play();
+        }
+        UIManager.main.ToggleMusic();
     }
 }
 

@@ -12,6 +12,10 @@ public class PlacementManager : MonoBehaviour
 
     private WorldItem selectedItem;
     private ShopItem displayItem;
+    private RectTransform displayItemRT;
+
+    private bool isPlacing = false;
+    public bool IsPlacing { get { return isPlacing; } }
 
     void Awake()
     {
@@ -25,6 +29,7 @@ public class PlacementManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
     [SerializeField]
     private Transform placementContainer;
@@ -48,9 +53,11 @@ public class PlacementManager : MonoBehaviour
         {
             return false;
         }
+        
         if (item.MinSize <= placementTarget.Size)
         {
-            selectedItem.Place(new Vector3(placementTarget.LowestX, placementTarget.LowestY, 0f));
+            selectedItem.Place(new Vector3(placementTarget.LowestX, placementTarget.LowestY, 0f), placementTarget);
+            isPlacing = false;
             selectedItem = null;
             displayItem.Kill();
             displayItem = null;
@@ -71,8 +78,8 @@ public class PlacementManager : MonoBehaviour
             Vector3 mousePosition = Input.mousePosition;
 
             displayItem.transform.position = new Vector3(
-                mousePosition.x,
-                mousePosition.y,
+                mousePosition.x + displayItemRT.sizeDelta.x / 3,
+                mousePosition.y + displayItemRT.sizeDelta.y / 4,
                 displayItem.transform.position.z
             );
         }
@@ -85,13 +92,15 @@ public class PlacementManager : MonoBehaviour
 
     public void SelectItem(ShopItem shopItem, int inputCount, int outputCount)
     {
+        isPlacing = true;
         GameItem item = ItemManager.main.GetItem(shopItem.ItemType);
         // TODO CHECK FOR CURRENTLY SELECTED ITEM
         selectedItem = Instantiate(item.prefab);
         selectedItem.transform.SetParent(placementContainer, false);
-        selectedItem.Init(item, inputCount, outputCount);
+        selectedItem.Init(item, inputCount, outputCount, shopItem.Cost, shopItem.ItemName);
 
         displayItem = Instantiate(shopItem);
+        displayItemRT = displayItem.GetComponent<RectTransform>();
         displayItem.DisableShopCapabilities();
         displayItem.transform.SetParent(displayContainer, false);
     }
